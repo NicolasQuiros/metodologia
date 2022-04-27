@@ -1,0 +1,22 @@
+Ideas proyecto:
+	*Tematica juego: Sala de escape
+	*Estilo cat mario, impredecibles.
+	*Cocinero estresado, pricesa con bonete, estudiante estresado. 
+	*Trama: Jornada laboral estresante de gastronomia lleva al chef a beber descontroladamente.
+	Luego despierta sin saber donde esta en una habitacion con utensilios de cocina gigantes. 
+	Una alacena enorme o se hizo miniatura?
+	Princesa perdida en un enorme castillo que no es de ella. El dueño del castillo la encerro para casarse con ella.
+	Ella no quiere casarse porque al principe no le gustan los bonetes y los animales.
+	Estudiante entra a robar un examen al laboratorio del profesor y se queda encerrado.
+	*Estilo grafico: Pokemon de plataforma
+	*Cada objeto libera una interaccion con decisiones que cambia el output final.
+	*El personaje tiene 3 atributos vida, hambre y mente.
+	*Final para la trama:Despierte de un sueño despues saw. 
+				Sale y sus amigos le dicen: Ganaste una apuesta, felicitaciones. En el inventario aparece.
+				Se encuentra al amigo/hermana/hermano que si le gustan los bonetes y se escapan.
+				El estudiante no encuentra el examen pero aprende tanto en el laboratorio que aprueba con un solido 8.
+				
+Notas:
+	*Si el atributo mente llega al minimo, pasarian cosas como dialogos desordenados, controles invertidos.
+	*Todas las paredes tienen puertas visuales, no funcionales.
+	*Guiños a SOFTWARELIBRE. Probablemente un pinguino, una nota en la mesa "Una linea de codigo es una hipotesis".
