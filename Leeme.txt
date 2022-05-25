@@ -1,0 +1,32 @@
+INFORME TRABAJO PRÁCTICO 4
+METODOLOGÍA DE LA INVESTIGACIÓN
+GRUPO F
+
+Equipo Investigador:
+Aprea Giret, Clara  (clara.aprea@alumnos.frm.utn.edu.ar) 
+Hana Mascarell, Nicolás Naguib (nicolas.hanna@alumnos.frm.utn.edu.ar) 
+Pitton, Federico José (federico.pitton@alumnos.frm.utn.edu.ar)
+Quirós Ricci, Nicolás (diego.quiros@alumnos.frm.utn.edu.ar)
+Salevich, Victoria(victoria.salevich@alumnos.frm.utn.edu.ar)
+
+Proyecto Final Grupo F: (Proyecto Princesa en fuga)
+El proyecto consta de la realización de un videojuego en el lenguaje de programación Python,con la posible utilización de las librerías PyGame y Arcade. 
+El videojuego tiene como temática ser un juego de escape, enfocado en la historia de una princesa en un gran castillo del cual debe escapar,
+en cada habitación deberá interactuar con los objetos y superar obstáculos para avanzar a la siguiente.
+ Cada decisión que el jugador vaya tomando cambiará el desenlace final de la historia del juego ya que este tiene cierto grado de 
+impredictibilidad. Vamos a tener hasta 3 finales distintos. Dicho personaje contará con 2 atributos vida y hambre que irán cambiando 
+con cada decisión que tome, pudiendo terminar en “end game” si no se realizan las decisiones correctas o facilitando la toma de 
+decisiones cuando estas están por encima del 80%. El juego va ser tipo consola, en una sala de escape con toma de decisiones y 
+gráficos en 16 bits, la nomenclatura y lenguaje de escritura del código será en español. El juego deberá correr tanto en Linux como 
+Windows. El juego tendrá como único dispositivo de entrada el teclado, esto le dará cierta imposibilidad de moverse usando el mouse o 
+cualquier otro dispositivo. En particular las teclas “arriba” y “abajo” del teclado y “enter” para seleccionar dicha entre las 
+distintas opciones. Y además en orden como para moverse dentro del mapa podrá usar todas las teclas de flecha. Todas las librerías y 
+códigos libres utilizados en el proyecto serán referenciados correspondientemente. Lenguaje a utilizar: Python Entorno: VS Code, 
+PyCharm
+
+Background: Vamos a usar la librería pygame dado que, es una librería con una amplia comunidad detrás, que en general mantiene y 
+mejora el software un poco más todo el tiempo. Tiene como ventaja tecnológica que corre sobre CPU y no sobre GPU, cosa que tal vez no 
+todas las máquinas puedan manejar. Sumado a esto tiene una excelente documentación que se mantiene actualizada. Además es compatible 
+tanto con Python2 o Python3, esto nos da una gran versatilidad de desarrollo. Por último nos permite adjuntar sprites en formato .png 
+en 16bits.
+
