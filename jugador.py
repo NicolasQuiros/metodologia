@@ -4,15 +4,20 @@ import pygame
 import config
 class Jugador:
     #Constructor por defecto
-    def __init__(self,posicion_x,posicion_y,posicion_z):
+    def __init__(self,posicion_x,posicion_y):
         print("Jugador creado.")
+        #Creamos al jugador en su posicion inicial
         self.posicion = [posicion_x,posicion_y]
-    def update(self):
+        self.imagen = pygame.image.load("imagenes/player.png")
+        self.imagen = pygame.transform.scale(self.imagen,(config.ESCALA, config.ESCALA))
+        self.rectangulo = pygame.Rect(self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA, config.ESCALA, config.ESCALA)
+    def actualizar(self):
         print("Jugador actualizado.")
+    def actualizarPosicion(self,x_cambio,y_cambio):
+        #Actualizamos la posicion sumandole los cambios hechos en la dimension x e y.
+        self.posicion[0] += x_cambio
+        self.posicion[1] += y_cambio
+        self.rectangulo = pygame.Rect(self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA, config.ESCALA, config.ESCALA)
+
     def render(self,pantalla):
-        pygame.draw.rect(pantalla, #Dibujar al personaje en la pantalla
-                        config.WHITE,#Color del personaje
-                        (self.positions[0]*config.SCALE, #tamaños del personaje
-                        self.positions[1]*config.SCALE,#tamaños del personaje
-                        config.SCALE,#tamaños del personaje
-                        config.SCALE),2)#tamaños del personaje
+        pantalla.blit(self.imagen,self.rectangulo)
