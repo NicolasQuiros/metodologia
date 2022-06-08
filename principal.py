@@ -11,7 +11,7 @@ pygame.init()
 # las dimensiones del display donde vamos a ver el juego.
 #Facilmente configurable
 pantalla =  pygame.display.set_mode((config.ALTO_PANTALLA,config.LARGO_PANTALLA)) #Seteamos la pantalla Largo,Ancho
-pygame.display.set_caption('Projecto Princesa') #Colocamos un nombre para la ventana que va aparecer.
+pygame.display.set_caption('Proyecto Princesa') #Colocamos un nombre para la ventana que va aparecer.
 #reloj = pygame.time.Clock() #Pygame incluye una funcion time para setear el tiempo
 juego = Juego(pantalla)
 #Lo metemos en un while para mantenerlo andando hasta que lo cerremos.
