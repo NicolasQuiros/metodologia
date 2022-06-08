@@ -38,13 +38,13 @@ class Juego:
                 if evento.key == pygame.K_ESCAPE:
                     self.estado_juego = EstadoJuego.TERMINADO
                 elif evento.key == pygame.K_w: #arriba
-                    self.jugador.actualizarPosicion(0,-1)
+                    self.mover_unidad(self.jugador,(0,-1))
                 elif evento.key == pygame.K_s: #abajo
-                    self.jugador.actualizarPosicion(0,1)
+                    self.mover_unidad(self.jugador,(0,1))
                 elif evento.key == pygame.K_a: #izquierda
-                    self.jugador.actualizarPosicion(-1,0)
+                    self.mover_unidad(self.jugador,(-1,0))
                 elif evento.key == pygame.K_d: #derecha
-                    self.jugador.actualizarPosicion(1,0)
+                    self.mover_unidad(self.jugador,(1,0))
     def cargar_mapa(self, nombre_archivo):
         with open('mapas/' + nombre_archivo + ".txt") as map_archivo:
             for linea in map_archivo:
@@ -67,8 +67,25 @@ class Juego:
                 x_pos = x_pos + 1
 
             y_pos = y_pos + 1
-
+    def mover_unidad(self,unidad,cambio_posicion):
+        #Actualizamoss la posicion de la unidad sumand el valor del vector
+        #cambio de posicion en x e y.
+        nueva_posicion = [unidad.posicion[0]+cambio_posicion[0],unidad.posicion[1]+cambio_posicion[1]]
+        #Verificamos que la posicion no se salga del mapa
+        if nueva_posicion[0] < 0 or nueva_posicion[0] > (len(self.mapa[0])-1):
+            return 
+        if nueva_posicion[1] < 0 or nueva_posicion[1] > (len(self.mapa[1])-1):
+            return 
+        #Verificamos que la posicion no sea un tipo de mapa por donde
+        #el jugador no puede pasar. 
+        #Por ejemplo el agua o un muro
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
+            return
+        else:
+            unidad.actualizarPosicion(nueva_posicion)
+#Esta es la lista de letras que se usan en el mapa
 mapa_letras_imagen = {
-    "G" : pygame.transform.scale(pygame.image.load("imagenes/grass1.png"), (config.ESCALA, config.ESCALA)),
-    "W": pygame.transform.scale(pygame.image.load("imagenes/water.png"), (config.ESCALA, config.ESCALA))
-}
+        "G" : pygame.transform.scale(pygame.image.load("imagenes/grass1.png"), (config.ESCALA, config.ESCALA)),
+        "W": pygame.transform.scale(pygame.image.load("imagenes/water.png"), (config.ESCALA, config.ESCALA))
+    }
+    
