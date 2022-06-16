@@ -70,7 +70,7 @@ class Juego:
     def mover_unidad(self,unidad,cambio_posicion):
         #Actualizamoss la posicion de la unidad sumand el valor del vector
         #cambio de posicion en x e y.
-        nueva_posicion = [unidad.posicion[0]+cambio_posicion[0],unidad.posicion[1]+cambio_posicion[1]]
+        nueva_posicion = [unidad.posicion[0]+cambio_posicion[0], unidad.posicion[1]+cambio_posicion[1]]
         #Verificamos que la posicion no se salga del mapa
         if nueva_posicion[0] < 0 or nueva_posicion[0] > (len(self.mapa[0])-1):
             return 
@@ -82,7 +82,7 @@ class Juego:
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
             return
         else:
-            unidad.actualizarPosicion(nueva_posicion)
+            unidad.actualizarPosicion(cambio_posicion[0], cambio_posicion[1])
 #Esta es la lista de letras que se usan en el mapa
 mapa_letras_imagen = {
         "G" : pygame.transform.scale(pygame.image.load("imagenes/grass1.png"), (config.ESCALA, config.ESCALA)),
