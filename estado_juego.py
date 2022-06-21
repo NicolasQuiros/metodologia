@@ -1,5 +1,8 @@
-from enum import Enum #Esta libreria permite usar enums en python como en C++.
-#Estos son los estados que puede tener el juego
+# Esta libreria permite usar enums en python como en C++.
+from enum import Enum
+# Estos son los estados que puede tener el juego
+
+
 class EstadoJuego(Enum):
     NULO = 0,
     CORRIENDO = 1,
