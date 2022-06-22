@@ -11,20 +11,20 @@ class Jugador:
         # Creamos al jugador en su posicion inicial
         self.posicion = [posicion_x, posicion_y]
         self.imagen = pygame.image.load("imagenes/princesa_frente.png")
-        self.imagen = pygame.transform.scale(
-            self.imagen, (config.ESCALA, config.ESCALA))
-        self.rectangulo = pygame.Rect(
-            self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA, config.ESCALA, config.ESCALA)
+
+        self.imagen = pygame.transform.scale(self.imagen,(config.ESCALA, config.ESCALA))
+        self.rectangulo = pygame.Rect(self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA, config.ESCALA, config.ESCALA)
+
 
     def actualizar(self):
         print("Jugador actualizado.")
 
-    def actualizarPosicion(self, x_cambio, y_cambio):
-        # Actualizamos la posicion sumandole los cambios hechos en la dimension x e y.
-        self.posicion[0] += x_cambio
-        self.posicion[1] += y_cambio
-        self.rectangulo = pygame.Rect(
-            self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA, config.ESCALA, config.ESCALA)
+    def actualizarPosicion(self,nueva_posicion):
+        #Actualizamos la posicion sumandole los cambios hechos en la dimension x e y.
+        self.posicion[0] = nueva_posicion[0]
+        self.posicion[1] = nueva_posicion[1]
+        
 
-    def render(self, pantalla):
+    def render(self, pantalla, camara):
+        self.rectangulo = pygame.Rect(self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA - (camara[1] * config.ESCALA) , config.ESCALA , config.ESCALA)
         pantalla.blit(self.imagen, self.rectangulo)

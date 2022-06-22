@@ -1,3 +1,4 @@
+import math
 import pygame
 # Modulos creados
 from jugador import Jugador
@@ -16,8 +17,13 @@ class Juego:
         # Por defecto sino se ha movido aun, no ha desenlazado todos los enventos
         self.jugador_se_movio = False
 
-    def configurar(self):  # Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
-        jugador = Jugador(1, 1)
+        self.estado_juego = EstadoJuego.NULO #Establecemos el juego como en el constructor por defecto.
+        self.mapa = [] #Creamos un arreglo donde almacenar la matriz del mapa
+        self.camara = [0, 0] #Creamos un objeto camara para seguimiento_camara en el mapa
+
+    def configurar(self): #Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
+        jugador = Jugador(1,1)
+
         self.jugador = jugador
         # Cargamos al jugador dentro de la lista de objetos
         self.objetos.append(jugador)
@@ -52,62 +58,85 @@ class Juego:
                 # Si el jugador toca "Esc" el estado del juego cambia a termina.
                 if evento.key == pygame.K_ESCAPE:
                     self.estado_juego = EstadoJuego.TERMINADO
-                elif evento.key == pygame.K_w:  # arriba
-                    self.mover_unidad(self.jugador, (0, -1))
-                elif evento.key == pygame.K_s:  # abajo
-                    self.mover_unidad(self.jugador, (0, 1))
-                elif evento.key == pygame.K_a:  # izquierda
-                    self.mover_unidad(self.jugador, (-1, 0))
-                elif evento.key == pygame.K_d:  # derecha
-                    self.mover_unidad(self.jugador, (1, 0))
+
+                elif evento.key == pygame.K_w: #arriba
+                    self.mover_unidad(self.jugador,(0,-1))
+                elif evento.key == pygame.K_s: #abajo
+                    self.mover_unidad(self.jugador,(0,1))
+                elif evento.key == pygame.K_a: #izquierda
+                    self.mover_unidad(self.jugador,(-1,0))
+                elif evento.key == pygame.K_d: #derecha
+                    self.mover_unidad(self.jugador,(1,0))
 
     def cargar_mapa(self, nombre_archivo):
-        with open('mapas/' + nombre_archivo + ".txt") as map_archivo:
-            for linea in map_archivo:
-                letras = []  # Creamos una lista de letras observadas
-                # Esto permite determinar que tipo de fondo lleva
-                # cada elemento de la matriz mapa
-                for i in range(0, len(linea), 2):
-                    # Guardamos todos los valores de las letras
-                    letras.append(linea[i])
-                # Ahora guardamos esa lista de letras en la matriz mapa
-                self.mapa.append(letras)
+        with open('mapas/' + nombre_archivo + ".txt") as mapa_archivo:
+            for linea in mapa_archivo:
+                letras = [] #Creamos una lista de letras observadas
+                            #Esto permite determinar que tipo de fondo lleva 
+                            # cada elemento de la matriz mapa
+                for i in range(0, len(linea) -1 , 2):
+                    letras.append(linea[i]) #Guardamos todos los valores de las letras
+                self.mapa.append(letras) #Ahora guardamos esa lista de letras en la matriz mapa
+
             print(self.mapa)
 
     def render_mapa(self, pantalla):
+        self.seguimiento_camara()
+
         y_pos = 0
         for linea in self.mapa:  # Recorremos cada fila de la matriz
             x_pos = 0
-            for letra in linea:  # Recorremos cada columna de esa fila
-                imagen = mapa_letras_imagen[letra]
-                rectangulo = pygame.Rect(
-                    x_pos * config.ESCALA, y_pos * config.ESCALA, config.ESCALA, config.ESCALA)
+
+            for letra in linea: #Recorremos cada columna de esa fila
+                imagen = mapa_letras_imagen[letra] 
+                rectangulo = pygame.Rect(x_pos * config.ESCALA, (y_pos * config.ESCALA) - (self.camara[1] * config.ESCALA), config.ESCALA, config.ESCALA)
+
                 pantalla.blit(imagen, rectangulo)
                 x_pos = x_pos + 1
 
             y_pos = y_pos + 1
 
     def mover_unidad(self, unidad, cambio_posicion):
-        # Actualizamoss la posicion de la unidad sumand el valor del vector
-        # cambio de posicion en x e y.
-        nueva_posicion = [unidad.posicion[0]+cambio_posicion[0],
-                          unidad.posicion[1]+cambio_posicion[1]]
-        # Verificamos que la posicion no se salga del mapa
+
+        #Actualizamoss la posicion de la unidad sumand el valor del vector
+        #cambio de posicion en x e y.
+        nueva_posicion = [unidad.posicion[0]+cambio_posicion[0], unidad.posicion[1]+cambio_posicion[1]]
+        #Verificamos que la posicion no se salga del mapa
         if nueva_posicion[0] < 0 or nueva_posicion[0] > (len(self.mapa[0])-1):
-            return
+            print(len(self.mapa[1])-1)
+            return 
         if nueva_posicion[1] < 0 or nueva_posicion[1] > (len(self.mapa[1])-1):
-            return
-        # Verificamos que la posicion no sea un tipo de mapa por donde
-        # el jugador no puede pasar.
-        # Por ejemplo el agua o un muro
+            print(len(self.mapa[1])-1)
+            return 
+        #Verificamos que la posicion no sea un tipo de mapa por donde
+        #el jugador no puede pasar. 
+        #Por ejemplo el agua o un muro
+
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
+            print(len(self.mapa[1])-1)
             return
         self.jugador_se_movio = True
         unidad.actualizarPosicion(cambio_posicion[0], cambio_posicion[1])
 
+            print(len(self.mapa[1])-1)
+            unidad.actualizarPosicion(nueva_posicion)
 
-# Esta es la lista de letras que se usan en el mapa
+    def seguimiento_camara(self):
+        max_posicion_y = len(self.mapa) - config.ALTO_PANTALLA / config.ESCALA
+        
+        #Tendremos al jugador siempre en el centro de la camara
+        posicion_y = self.jugador.posicion[1] - math.ceil(round(config.ALTO_PANTALLA / config.ESCALA/ 2))
+
+        if posicion_y <= max_posicion_y and posicion_y >= 0:
+            self.camara[1] = posicion_y
+        elif posicion_y < 0:
+            self.camara[1] = 0
+        else:
+            self.camara[1] = max_posicion_y
+#Esta es la lista de letras que se usan en el mapa
 mapa_letras_imagen = {
-    "G": pygame.transform.scale(pygame.image.load("imagenes/grass1.png"), (config.ESCALA, config.ESCALA)),
-    "W": pygame.transform.scale(pygame.image.load("imagenes/water.png"), (config.ESCALA, config.ESCALA))
-}
+            "G" : pygame.transform.scale(pygame.image.load("imagenes/grass1.png"), (config.ESCALA, config.ESCALA)),
+            "W": pygame.transform.scale(pygame.image.load("imagenes/water.png"), (config.ESCALA, config.ESCALA))
+        }
+    
+
