@@ -59,7 +59,6 @@ class Juego:
                 for i in range(0, len(linea) -1 , 2):
                     letras.append(linea[i]) #Guardamos todos los valores de las letras
                 self.mapa.append(letras) #Ahora guardamos esa lista de letras en la matriz mapa
-            print(self.mapa)
 
     def render_mapa(self, pantalla):
         self.seguimiento_camara()
@@ -81,19 +80,19 @@ class Juego:
         nueva_posicion = [unidad.posicion[0]+cambio_posicion[0], unidad.posicion[1]+cambio_posicion[1]]
         #Verificamos que la posicion no se salga del mapa
         if nueva_posicion[0] < 0 or nueva_posicion[0] > (len(self.mapa[0])-1):
-            print(len(self.mapa[1])-1)
+
             return 
         if nueva_posicion[1] < 0 or nueva_posicion[1] > (len(self.mapa[1])-1):
-            print(len(self.mapa[1])-1)
+
             return 
         #Verificamos que la posicion no sea un tipo de mapa por donde
         #el jugador no puede pasar. 
         #Por ejemplo el agua o un muro
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
-            print(len(self.mapa[1])-1)
+
             return
         else:
-            print(len(self.mapa[1])-1)
+
             unidad.actualizarPosicion(nueva_posicion)
 
     def seguimiento_camara(self):
