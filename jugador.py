@@ -1,16 +1,20 @@
-#Modulos descargados de internet
+# Modulos descargados de internet
 import pygame
-#Modulos propios
+# Modulos propios
 import config
+
+
 class Jugador:
-    #Constructor por defecto
-    def __init__(self,posicion_x,posicion_y):
+    # Constructor por defecto
+    def __init__(self, posicion_x, posicion_y):
         print("Jugador creado.")
-        #Creamos al jugador en su posicion inicial
-        self.posicion = [posicion_x,posicion_y]
+        # Creamos al jugador en su posicion inicial
+        self.posicion = [posicion_x, posicion_y]
         self.imagen = pygame.image.load("imagenes/princesa_frente.png")
+
         self.imagen = pygame.transform.scale(self.imagen,(config.ESCALA, config.ESCALA))
         self.rectangulo = pygame.Rect(self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA, config.ESCALA, config.ESCALA)
+
 
     def actualizar(self):
         print("Jugador actualizado.")
