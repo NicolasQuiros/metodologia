@@ -10,8 +10,11 @@ class Juego:
     def __init__(self,pantalla):
         self.pantalla = pantalla
         self.objetos = []
-        self.estado_juego = EstadoJuego.NULO #Establecemos el juego como en el constructor por defecto.
-        self.mapa = [] #Creamos un arreglo donde almacenar la matriz del mapa
+        # Establecemos el juego como en el constructor por defecto.
+        self.estado_juego = EstadoJuego.NULO
+        self.mapa = []  # Creamos un arreglo donde almacenar la matriz del mapa
+        # Por defecto sino se ha movido aun, no ha desenlazado todos los enventos
+        self.jugador_se_movio = False
         self.camara = [0, 0] #Creamos un objeto camara para seguimiento_camara en el mapa
 
     def configurar(self): #Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
@@ -23,16 +26,25 @@ class Juego:
         self.cargar_mapa("01")
 
     def actualizar(self):
+        # Volvemos este booleano a su valor por defecto
+        self.jugador_se_movio = False
         self.pantalla.fill(config.NEGRO)
-        #print("actualizado")
+        # print("actualizado")
         self.manipular_eventos()
         self.render_mapa(self.pantalla)
         #Este es el constante actualizador
         #Ctemente esta fijandose si se actualizaron los datos del juego
         #Y luego renderizandolos
         for objeto in self.objetos:
-            objeto.render(self.pantalla, self.camara) #Aca asumimos que todos los objetos 
-                                #de esta lista tiene el metodo render()
+            objeto.render(self.pantalla)  # Aca asumimos que todos los objetos
+            # de esta lista tiene el metodo render()
+        if self.jugador_se_movio:
+            self.determinar_eventos_jugador()
+        
+    def determinar_eventos_jugador(self):
+        mapa_letra = self.mapa[self.jugador.posicion[1],self.jugador.posicion[0]]
+        print(mapa_letra)
+        
     def manipular_eventos(self):
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -91,7 +103,8 @@ class Juego:
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
 
             return
-        else:
+        self.jugador_se_movio = True
+        unidad.actualizarPosicion(cambio_posicion[0], cambio_posicion[1])
 
             unidad.actualizarPosicion(nueva_posicion)
 
