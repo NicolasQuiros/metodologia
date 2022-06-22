@@ -14,7 +14,7 @@ pygame.init()
 pantalla = pygame.display.set_mode(
     (config.ALTO_PANTALLA, config.LARGO_PANTALLA))
 # Colocamos un nombre para la ventana que va aparecer.
-pygame.display.set_caption('Proyecto Princesa')
+pygame.display.set_caption('La Princesa y el Pingüino')
 # reloj = pygame.time.Clock() #Pygame incluye una funcion time para setear el tiempo
 juego = Juego(pantalla)
 # Lo metemos en un while para mantenerlo andando hasta que lo cerremos.
