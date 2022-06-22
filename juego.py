@@ -13,6 +13,8 @@ class Juego:
         # Establecemos el juego como en el constructor por defecto.
         self.estado_juego = EstadoJuego.NULO
         self.mapa = []  # Creamos un arreglo donde almacenar la matriz del mapa
+        # Por defecto sino se ha movido aun, no ha desenlazado todos los enventos
+        self.jugador_se_movio = False
 
     def configurar(self):  # Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
         jugador = Jugador(1, 1)
@@ -23,8 +25,10 @@ class Juego:
         self.cargar_mapa("01")
 
     def actualizar(self):
+        # Volvemos este booleano a su valor por defecto
+        self.jugador_se_movio = False
         self.pantalla.fill(config.NEGRO)
-        print("actualizado")
+        # print("actualizado")
         self.manipular_eventos()
         self.render_mapa(self.pantalla)
         # Este es el constante actualizador
@@ -33,7 +37,13 @@ class Juego:
         for objeto in self.objetos:
             objeto.render(self.pantalla)  # Aca asumimos que todos los objetos
             # de esta lista tiene el metodo render()
-
+        if self.jugador_se_movio:
+            self.determinar_eventos_jugador()
+        
+    def determinar_eventos_jugador(self):
+        mapa_letra = self.mapa[self.jugador.posicion[1],self.jugador.posicion[0]]
+        print(mapa_letra)
+        
     def manipular_eventos(self):
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -92,8 +102,8 @@ class Juego:
         # Por ejemplo el agua o un muro
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
             return
-        else:
-            unidad.actualizarPosicion(cambio_posicion[0], cambio_posicion[1])
+        self.jugador_se_movio = True
+        unidad.actualizarPosicion(cambio_posicion[0], cambio_posicion[1])
 
 
 # Esta es la lista de letras que se usan en el mapa
