@@ -19,7 +19,7 @@ class Jugador:
     def actualizar(self):
         print("Jugador actualizado.")
 
-    def actualizarPosicion(self,nueva_posicion):
+    def actualizarPosicion(self,nueva_posicion): #nueva_posicion es una tupla
         #Actualizamos la posicion sumandole los cambios hechos en la dimension x e y.
         self.posicion[0] = nueva_posicion[0]
         self.posicion[1] = nueva_posicion[1]
