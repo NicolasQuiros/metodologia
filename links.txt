@@ -1,0 +1,2 @@
+Links de los modulos y su documentacion:
+pygame = https://www.pygame.org/news
