@@ -111,7 +111,7 @@ class Juego:
         # Verificamos que la posicion no sea un tipo de mapa por donde
         # el jugador no puede pasar.
         # Por ejemplo el agua o un muro
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_AGUA:
 
             return
         self.jugador_se_movio = True
@@ -134,7 +134,7 @@ class Juego:
 
 # Esta es la lista de letras que se usan en el mapa
 mapa_letras_imagen = {
-    config.LETRA_MAPA_PASTO: pygame.transform.scale(pygame.image.load("imagenes/grass1.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_MAPA_PASTO: pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
     config.LETRA_MAPA_AGUA: pygame.transform.scale(pygame.image.load(
         "imagenes/water.png"), (config.ESCALA, config.ESCALA))
 }
