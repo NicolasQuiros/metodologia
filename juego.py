@@ -33,6 +33,7 @@ class Juego:
         for objeto in self.objetos:
             objeto.render(self.pantalla, self.camara) #Aca asumimos que todos los objetos 
                                 #de esta lista tiene el metodo render()
+                                
     def manipular_eventos(self):
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
