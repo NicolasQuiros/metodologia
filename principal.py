@@ -23,4 +23,3 @@ while juego.estado_juego == EstadoJuego.CORRIENDO:
     # reloj.tick(50) #Seteamos el tiempo de juego en 50.
     juego.actualizar()  # hacemos la configuracion inicial
     # Actualizamos el contenido de la pantalla con flip.
-    pygame.display.flip()
