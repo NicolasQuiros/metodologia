@@ -11,11 +11,6 @@ class Juego:
     def __init__(self, pantalla):
         self.pantalla = pantalla
         self.objetos = []
-<<<<<<< HEAD
-        self.estado_juego = EstadoJuego.NULO #Establecemos el juego como en el constructor por defecto.
-        self.mapa = [] #Creamos un arreglo donde almacenar la matriz del mapa
-        self.camara = [0, 0] #Creamos un objeto camara para seguimiento_camara en el mapa
-=======
         # Establecemos el juego como en el constructor por defecto.
         self.estado_juego = EstadoJuego.NULO
         self.mapa = []  # Creamos un arreglo donde almacenar la matriz del mapa
@@ -23,7 +18,6 @@ class Juego:
         self.jugador_se_movio = False
         # Creamos un objeto camara para seguimiento_camara en el mapa
         self.camara = [0, 0]
->>>>>>> 9c0415f1b121088df0218a481edd6c3e07558bd6
 
     def configurar(self):  # Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
         jugador = Jugador(1, 1)
@@ -42,11 +36,6 @@ class Juego:
         # Ctemente esta fijandose si se actualizaron los datos del juego
         # Y luego renderizandolos
         for objeto in self.objetos:
-<<<<<<< HEAD
-            objeto.render(self.pantalla, self.camara) #Aca asumimos que todos los objetos 
-                                #de esta lista tiene el metodo render()
-                                
-=======
             # Aca asumimos que todos los objetos
             objeto.render(self.pantalla, self.camara)
             # de esta lista tiene el metodo render()
@@ -56,12 +45,10 @@ class Juego:
     def determinar_eventos_jugador(self):
         # TRADUCIME
         letra_mapa = self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]
-        print(letra_mapa)
 
         if letra_mapa == config.LETRA_MAPA_CAMINO:
             return
 
->>>>>>> 9c0415f1b121088df0218a481edd6c3e07558bd6
     def manipular_eventos(self):
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -124,14 +111,8 @@ class Juego:
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
 
             return
-<<<<<<< HEAD
-        else:
-
-            unidad.actualizarPosicion(nueva_posicion)
-=======
         self.jugador_se_movio = True
         unidad.actualizarPosicion(nueva_posicion)
->>>>>>> 9c0415f1b121088df0218a481edd6c3e07558bd6
 
     def seguimiento_camara(self):
         max_posicion_y = len(self.mapa) - config.ALTO_PANTALLA / config.ESCALA
