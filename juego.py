@@ -50,6 +50,22 @@ class Juego:
             return
 
     def manipular_eventos(self):
+        presionado = pygame.key.get_pressed() 
+
+        if presionado[pygame.K_w]:
+            self.mover_unidad(self.jugador, (0, -1))
+            self.jugador.imagen=self.jugador.imagenes["arriba"]
+        elif presionado[pygame.K_s]:
+            self.mover_unidad(self.jugador, (0, 1))
+            self.jugador.imagen=self.jugador.imagenes["abajo"]
+        elif presionado[pygame.K_a]:
+            self.mover_unidad(self.jugador, (-1, 0))
+            self.jugador.imagen=self.jugador.imagenes["izquierda"]
+        elif presionado[pygame.K_d]:
+            self.mover_unidad(self.jugador, (1, 0))
+            self.jugador.imagen=self.jugador.imagenes["derecha"]
+
+
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 self.estado_juego = EstadoJuego.TERMINADO
@@ -57,14 +73,20 @@ class Juego:
                 # Si el jugador toca "Esc" el estado del juego cambia a termina.
                 if evento.key == pygame.K_ESCAPE:
                     self.estado_juego = EstadoJuego.TERMINADO
+                    """"
                 elif evento.key == pygame.K_w:  # arriba
                     self.mover_unidad(self.jugador, (0, -1))
+                    self.jugador.imagen=self.jugador.imagenes["arriba"]
                 elif evento.key == pygame.K_s:  # abajo
                     self.mover_unidad(self.jugador, (0, 1))
+                    self.jugador.imagen=self.jugador.imagenes["abajo"]
                 elif evento.key == pygame.K_a:  # izquierda
                     self.mover_unidad(self.jugador, (-1, 0))
+                    self.jugador.imagen=self.jugador.imagenes["izquierda"]
                 elif evento.key == pygame.K_d:  # derecha
                     self.mover_unidad(self.jugador, (1, 0))
+                    self.jugador.imagen=self.jugador.imagenes["derecha"]
+                    """
 
     def cargar_mapa(self, nombre_archivo):
         with open('mapas/' + nombre_archivo + ".txt") as mapa_archivo:
