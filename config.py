@@ -3,10 +3,10 @@ BLANCO = (255, 255, 255)
 DORADO = (220, 184, 5)
 DORADO2 = (236, 196, 0)
 #Imagenes
-PRINCESA_DERECHA = "imagenes/pricensa_derecha40.png"
-PRINCESA_IZQUIERDA = "imagenes/Princesa Izquierda40.png"
-PRINCESA_FRENTE = "imagenes/Princesa_Frente40.png"
-PRINCESA_ESPALDA = "imagenes/Princesa_espalda40.png"
+PRINCESA_DERECHA = "imagenes/pricensa_derecha.png"
+PRINCESA_IZQUIERDA = "imagenes/princesa_izquierda.png"
+PRINCESA_FRENTE = "imagenes/princesa_frente.png"
+PRINCESA_ESPALDA = "imagenes/princesa_espalda.png"
 ESCALA = 32
 
 ALTO_PANTALLA = 480
