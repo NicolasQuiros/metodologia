@@ -25,13 +25,11 @@ class Juego:
         # Cargamos al jugador dentro de la lista de objetos
         self.objetos.append(jugador)
         self.estado_juego = EstadoJuego.CORRIENDO
-        self.cargar_mapa("01")
+        self.cargar_mapa("03")
 
     def actualizar(self):
-        # Volvemos este booleano a su valor por defecto
-        self.jugador_se_movio = False
         self.pantalla.fill(config.NEGRO)
-        # print("actualizado")
+        #print("actualizado")
         self.manipular_eventos()
         self.render_mapa(self.pantalla)
         # Este es el constante actualizador
@@ -47,7 +45,6 @@ class Juego:
     def determinar_eventos_jugador(self):
         # TRADUCIME
         letra_mapa = self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]
-        print(letra_mapa)
 
         if letra_mapa == config.LETRA_MAPA_CAMINO:
             return
@@ -110,8 +107,29 @@ class Juego:
             return
         # Verificamos que la posicion no sea un tipo de mapa por donde
         # el jugador no puede pasar.
-        # Por ejemplo el agua o un muro
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "W":
+        # Por ejemplo un muro
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "F":
+
+            return
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "P":
+
+            return
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "L":
+
+            return
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "X":
+
+            return
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "C":
+
+            return
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "A":
+
+            return
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "G":
+
+            return
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "B":
 
             return
         self.jugador_se_movio = True
@@ -134,7 +152,16 @@ class Juego:
 
 # Esta es la lista de letras que se usan en el mapa
 mapa_letras_imagen = {
-    config.LETRA_MAPA_PASTO: pygame.transform.scale(pygame.image.load("imagenes/grass1.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_MAPA_AGUA: pygame.transform.scale(pygame.image.load(
-        "imagenes/water.png"), (config.ESCALA, config.ESCALA))
+    "D": pygame.transform.scale(pygame.image.load("imagenes/D.png"), (config.ESCALA, config.ESCALA)),
+    "F": pygame.transform.scale(pygame.image.load("imagenes/T.png"), (config.ESCALA, config.ESCALA)),
+    "S": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    "C": pygame.transform.scale(pygame.image.load("imagenes/C.png"), (config.ESCALA, config.ESCALA)),
+    "A": pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
+    "P": pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
+    "T": pygame.transform.scale(pygame.image.load("imagenes/T.png"), (config.ESCALA, config.ESCALA)),
+    "X": pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
+    "L": pygame.transform.scale(pygame.image.load("imagenes/L.png"), (config.ESCALA, config.ESCALA)),
+    "B": pygame.transform.scale(pygame.image.load("imagenes/B.png"), (config.ESCALA, config.ESCALA)),
+    "G": pygame.transform.scale(pygame.image.load("imagenes/G.png"), (config.ESCALA, config.ESCALA)),
+    "K": pygame.transform.scale(pygame.image.load("imagenes/K.png"), (config.ESCALA, config.ESCALA)),
 }
