@@ -59,12 +59,16 @@ class Juego:
                     self.estado_juego = EstadoJuego.TERMINADO
                 elif evento.key == pygame.K_w:  # arriba
                     self.mover_unidad(self.jugador, (0, -1))
+                    self.jugador.imagen=self.jugador.imagenes["arriba"]
                 elif evento.key == pygame.K_s:  # abajo
                     self.mover_unidad(self.jugador, (0, 1))
+                    self.jugador.imagen=self.jugador.imagenes["abajo"]
                 elif evento.key == pygame.K_a:  # izquierda
                     self.mover_unidad(self.jugador, (-1, 0))
+                    self.jugador.imagen=self.jugador.imagenes["izquierda"]
                 elif evento.key == pygame.K_d:  # derecha
                     self.mover_unidad(self.jugador, (1, 0))
+                    self.jugador.imagen=self.jugador.imagenes["derecha"]
 
     def cargar_mapa(self, nombre_archivo):
         with open('mapas/' + nombre_archivo + ".txt") as mapa_archivo:

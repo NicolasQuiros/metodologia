@@ -11,9 +11,14 @@ class Jugador:
         # Creamos al jugador en su posicion inicial
         self.posicion = [posicion_x, posicion_y]
         self.imagen = pygame.image.load(config.PRINCESA_FRENTE)
-
         self.imagen = pygame.transform.scale(self.imagen,(config.ESCALA , config.ESCALA))
         self.rectangulo = pygame.Rect(self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA, config.ESCALA, config.ESCALA)
+        self.imagenes =  {
+            "arriba": pygame.image.load(config.PRINCESA_ESPALDA),
+            "abajo": pygame.image.load(config.PRINCESA_FRENTE),
+            "derecha": pygame.image.load(config.PRINCESA_DERECHA),
+            "izquierda": pygame.image.load(config.PRINCESA_IZQUIERDA)
+        }
 
 
     def actualizar(self):

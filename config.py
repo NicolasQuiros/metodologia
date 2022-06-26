@@ -6,7 +6,7 @@ DORADO2 = (236, 196, 0)
 PRINCESA_DERECHA = "imagenes/pricensa_derecha40.png"
 PRINCESA_IZQUIERDA = "imagenes/Princesa Izquierda40.png"
 PRINCESA_FRENTE = "imagenes/Princesa_Frente40.png"
-PRINCESA_ESPALDA = "imagenes/Princesa Izquierda40.png"
+PRINCESA_ESPALDA = "imagenes/Princesa_espalda40.png"
 ESCALA = 32
 
 ALTO_PANTALLA = 480
