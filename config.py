@@ -1,5 +1,7 @@
 NEGRO = (0, 0, 0)
 BLANCO = (255, 255, 255)
+DORADO = (220, 184, 5)
+DORADO2 = (236, 196, 0)
 #Imagenes
 PRINCESA_DERECHA = "imagenes/pricensa_derecha40.png"
 PRINCESA_IZQUIERDA = "imagenes/Princesa Izquierda40.png"

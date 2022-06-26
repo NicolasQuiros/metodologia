@@ -1,7 +1,7 @@
 import pygame
 import sys
 import config
-sys.init
+#sys.init
 pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Button!")
@@ -27,11 +27,11 @@ class Button():
 
 	def changeColor(self, position):
 		if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
-			self.text = main_font.render(self.text_input, True, DORADO)
+			self.text = main_font.render(self.text_input, True, config.DORADO)
 		else:
-			self.text = main_font.render(self.text_input, True, DORADO2)
+			self.text = main_font.render(self.text_input, True, config.DORADO2)
 
-button_surface = pygame.image.load("botonPH1.png")
+button_surface = pygame.image.load("imagenes/botonPH1.png")
 button_surface = pygame.transform.scale(button_surface, (400, 150))
 
 button = Button(button_surface, 400, 300, "Iniciar Juego")
