@@ -1,6 +1,5 @@
 from random import randint
 from random import seed
-from numpy import rec
 import pygame
 import config
 #Generar un numero aleatorio entre un maximo y minimo.

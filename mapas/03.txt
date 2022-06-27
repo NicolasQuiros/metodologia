@@ -1,6 +1,6 @@
 D D F F F F F F F F F F F F F F D D F F
-D D S S S C S S S S S S S A F S S S S F
-F S S S S S S F T T T T S S F S S S S F
+D D S S 2 C S S S S S S 1 A F S S S S F
+F S S S S 2 S F T T T T 1 1 F S S S S F
 F S S S S S S F T P L T S S F S S S S F
 F S S S S S S F T T T T S S F S S S S F
 F F F F F F F F S S S S S S F S S S S F
