@@ -15,12 +15,12 @@ pantalla = pygame.display.set_mode(
     (config.LARGO_PANTALLA, config.ALTO_PANTALLA))
 # Colocamos un nombre para la ventana que va aparecer.
 pygame.display.set_caption('La Princesa y el Pingüino')
-reloj = pygame.time.Clock() #Pygame incluye una funcion time para setear el tiempo
+reloj = pygame.time.Clock()  # Pygame incluye una funcion time para setear el tiempo
 juego = Juego(pantalla)
 # Lo metemos en un while para mantenerlo andando hasta que lo cerremos.
 juego.configurar()
 while juego.estado_juego == EstadoJuego.CORRIENDO:
-    reloj.tick(7) #Seteamos el tiempo de juego en 50.
+    reloj.tick(7)  # Seteamos el tiempo de juego en 50.
     juego.actualizar()  # hacemos la configuracion inicial
     # Actualizamos el contenido de la pantalla con flip.
     pygame.display.flip()
