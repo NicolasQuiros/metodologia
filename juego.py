@@ -1,8 +1,12 @@
 import math
+from time import sleep
+import time
 import pygame
 # Modulos creados
 from jugador import Jugador
 from estado_juego import EstadoJuego
+from iteraccion_objetos import IteraccionObjetos
+from utilidades import reaccion
 import config
 
 
@@ -13,6 +17,7 @@ class Juego:
         self.objetos = []
         # Establecemos el juego como en el constructor por defecto.
         self.estado_juego = EstadoJuego.NULO
+        self.iteraccion_objetos = IteraccionObjetos.NADA
         self.mapa = []  # Creamos un arreglo donde almacenar la matriz del mapa
         # Por defecto sino se ha movido aun, no ha desenlazado todos los enventos
         self.jugador_se_movio = False
@@ -41,6 +46,20 @@ class Juego:
             # de esta lista tiene el metodo render()
         if self.jugador_se_movio:
             self.determinar_eventos_jugador()
+
+        self.iteracciones_jugador()
+
+    def iteracciones_jugador(self):
+        if self.iteraccion_objetos ==  IteraccionObjetos.NADA:
+            return
+        elif self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
+            reaccion(self.pantalla,"Esa tilin")
+            self.iteraccion_objetos = IteraccionObjetos.NADA
+            return
+        elif self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR:
+            reaccion(self.pantalla,"Andas seguido por aca?")
+            self.iteraccion_objetos = IteraccionObjetos.NADA
+            return        
 
     def determinar_eventos_jugador(self):
         # TRADUCIME
@@ -73,6 +92,14 @@ class Juego:
                 # Si el jugador toca "Esc" el estado del juego cambia a termina.
                 if evento.key == pygame.K_ESCAPE:
                     self.estado_juego = EstadoJuego.TERMINADO
+                elif evento.key == pygame.K_e:
+                    if self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "1":
+                        print(self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.SALUDAR
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]=="2":
+                        print(self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.PREGUNTAR
+
                     """"
                 elif evento.key == pygame.K_w:  # arriba
                     self.mover_unidad(self.jugador, (0, -1))
@@ -186,4 +213,6 @@ mapa_letras_imagen = {
     "B": pygame.transform.scale(pygame.image.load("imagenes/B.png"), (config.ESCALA, config.ESCALA)),
     "G": pygame.transform.scale(pygame.image.load("imagenes/G.png"), (config.ESCALA, config.ESCALA)),
     "K": pygame.transform.scale(pygame.image.load("imagenes/K.png"), (config.ESCALA, config.ESCALA)),
+    "1": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    "2": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA))
 }
