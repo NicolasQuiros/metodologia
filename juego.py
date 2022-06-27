@@ -1,3 +1,4 @@
+from ast import If
 import math
 from time import sleep
 import time
@@ -53,12 +54,12 @@ class Juego:
         if self.iteraccion_objetos ==  IteraccionObjetos.NADA:
             return
         elif self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
-            reaccion(self.pantalla,"Esa tilin")
-            self.iteraccion_objetos = IteraccionObjetos.NADA
+            reaccion(self.pantalla,"Vamos aprobar?")
+            #self.iteraccion_objetos = IteraccionObjetos.NADA
             return
         elif self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR:
             reaccion(self.pantalla,"Andas seguido por aca?")
-            self.iteraccion_objetos = IteraccionObjetos.NADA
+            #self.iteraccion_objetos = IteraccionObjetos.NADA
             return        
 
     def determinar_eventos_jugador(self):
@@ -99,6 +100,18 @@ class Juego:
                     elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]=="2":
                         print(self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.PREGUNTAR
+                elif evento.key == pygame.K_q:
+                    self.iteraccion_objetos = IteraccionObjetos.NADA
+                elif evento.key == pygame.K_y:
+                    if self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR or self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
+                        print("selecciono si")
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                elif evento.key == pygame.K_n:
+                    if self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR or self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
+                        print("selecciono no")
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+                    
 
                     """"
                 elif evento.key == pygame.K_w:  # arriba
