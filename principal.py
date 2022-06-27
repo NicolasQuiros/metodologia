@@ -12,7 +12,7 @@ pygame.init()
 # Facilmente configurable
 # Seteamos la pantalla Largo,Ancho
 pantalla = pygame.display.set_mode(
-    (config.ALTO_PANTALLA, config.LARGO_PANTALLA))
+    (config.LARGO_PANTALLA, config.ALTO_PANTALLA))
 # Colocamos un nombre para la ventana que va aparecer.
 pygame.display.set_caption('La Princesa y el Pingüino')
 reloj = pygame.time.Clock() #Pygame incluye una funcion time para setear el tiempo
