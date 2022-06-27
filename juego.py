@@ -180,7 +180,7 @@ mapa_letras_imagen = {
     "C": pygame.transform.scale(pygame.image.load("imagenes/C.png"), (config.ESCALA, config.ESCALA)),
     "A": pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
     "P": pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
-    "T": pygame.transform.scale(pygame.image.load("imagenes/T.png"), (config.ESCALA, config.ESCALA)),
+    "T": pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
     "X": pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
     "L": pygame.transform.scale(pygame.image.load("imagenes/L.png"), (config.ESCALA, config.ESCALA)),
     "B": pygame.transform.scale(pygame.image.load("imagenes/B.png"), (config.ESCALA, config.ESCALA)),
