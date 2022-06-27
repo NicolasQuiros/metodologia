@@ -1,13 +1,14 @@
+from ast import If
 import math
-from time import sleep
-import time
 import pygame
 # Modulos creados
 from jugador import Jugador
 from estado_juego import EstadoJuego
 from iteraccion_objetos import IteraccionObjetos
-from utilidades import reaccion
+from utilidades import generar_burbuja_texto,generar_burbuja_texto2
+from estado_nivel import EstadoNivel
 import config
+import textos
 
 
 class Juego:
@@ -23,6 +24,7 @@ class Juego:
         self.jugador_se_movio = False
         # Creamos un objeto camara para seguimiento_camara en el mapa
         self.camara = [0, 0]
+        self.estado_nivel = EstadoNivel()
 
     def configurar(self):  # Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
         jugador = Jugador(1, 1)
@@ -34,7 +36,7 @@ class Juego:
 
     def actualizar(self):
         self.pantalla.fill(config.NEGRO)
-        #print("actualizado")
+        # print("actualizado")
         self.manipular_eventos()
         self.render_mapa(self.pantalla)
         # Este es el constante actualizador
@@ -50,41 +52,48 @@ class Juego:
         self.iteracciones_jugador()
 
     def iteracciones_jugador(self):
-        if self.iteraccion_objetos ==  IteraccionObjetos.NADA:
+        if self.iteraccion_objetos == IteraccionObjetos.NADA:
             return
-        elif self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
-            reaccion(self.pantalla,"Esa tilin")
-            self.iteraccion_objetos = IteraccionObjetos.NADA
+        elif self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
+            #reaccion(self.pantalla, "Hola!")
+            generar_burbuja_texto(
+                self.pantalla, textos.SALUDO_PINGUINO, "si", "no")
+            #self.iteraccion_objetos = IteraccionObjetos.NADA
             return
-        elif self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR:
-            reaccion(self.pantalla,"Andas seguido por aca?")
-            self.iteraccion_objetos = IteraccionObjetos.NADA
-            return        
+        elif self.iteraccion_objetos == IteraccionObjetos.MANZANA:
+            generar_burbuja_texto2(self.pantalla, textos.PREGUNTA_MANZANA, textos.PREGUNTA_MANZANA2,
+                                  textos.OPCION1_MANZANA, textos.OPCION2_MANZANA)
+            #self.iteraccion_objetos = IteraccionObjetos.NADA
+            return
 
     def determinar_eventos_jugador(self):
         # TRADUCIME
-        letra_mapa = self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]
+        letra_mapa = self.mapa[self.jugador.posicion[1]
+                               ][self.jugador.posicion[0]]
 
         if letra_mapa == config.LETRA_MAPA_CAMINO:
             return
 
     def manipular_eventos(self):
-        presionado = pygame.key.get_pressed() 
-
+        # Si el jugador toca o mantiene presionada una tecla.
+        presionado = pygame.key.get_pressed()
+        # Si toca o mantiene presionado w se mueve arriba
         if presionado[pygame.K_w]:
             self.mover_unidad(self.jugador, (0, -1))
-            self.jugador.imagen=self.jugador.imagenes["arriba"]
+            self.jugador.imagen = self.jugador.imagenes["arriba"]
+        # Si toca o mantiene presionado w se mueve abajo
         elif presionado[pygame.K_s]:
             self.mover_unidad(self.jugador, (0, 1))
-            self.jugador.imagen=self.jugador.imagenes["abajo"]
+            self.jugador.imagen = self.jugador.imagenes["abajo"]
+        # Si toca o mantiene presionado w se mueve izquierda
         elif presionado[pygame.K_a]:
             self.mover_unidad(self.jugador, (-1, 0))
-            self.jugador.imagen=self.jugador.imagenes["izquierda"]
+            self.jugador.imagen = self.jugador.imagenes["izquierda"]
+        # Si toca o mantiene presionado w se mueve derecha
         elif presionado[pygame.K_d]:
             self.mover_unidad(self.jugador, (1, 0))
-            self.jugador.imagen=self.jugador.imagenes["derecha"]
-
-
+            self.jugador.imagen = self.jugador.imagenes["derecha"]
+        # Si presiona una sola vez la tecla se genera un evento
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 self.estado_juego = EstadoJuego.TERMINADO
@@ -92,28 +101,32 @@ class Juego:
                 # Si el jugador toca "Esc" el estado del juego cambia a termina.
                 if evento.key == pygame.K_ESCAPE:
                     self.estado_juego = EstadoJuego.TERMINADO
+                # Si el jugador toca la letra "E" para interactuar
                 elif evento.key == pygame.K_e:
                     if self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "1":
-                        print(self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
-                        self.iteraccion_objetos = IteraccionObjetos.SALUDAR
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]=="2":
-                        print(self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
-                        self.iteraccion_objetos = IteraccionObjetos.PREGUNTAR
+                        self.iteraccion_objetos = IteraccionObjetos.PINGUINO_INICIO
 
-                    """"
-                elif evento.key == pygame.K_w:  # arriba
-                    self.mover_unidad(self.jugador, (0, -1))
-                    self.jugador.imagen=self.jugador.imagenes["arriba"]
-                elif evento.key == pygame.K_s:  # abajo
-                    self.mover_unidad(self.jugador, (0, 1))
-                    self.jugador.imagen=self.jugador.imagenes["abajo"]
-                elif evento.key == pygame.K_a:  # izquierda
-                    self.mover_unidad(self.jugador, (-1, 0))
-                    self.jugador.imagen=self.jugador.imagenes["izquierda"]
-                elif evento.key == pygame.K_d:  # derecha
-                    self.mover_unidad(self.jugador, (1, 0))
-                    self.jugador.imagen=self.jugador.imagenes["derecha"]
-                    """
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "2":
+                        self.iteraccion_objetos = IteraccionObjetos.MANZANA
+                elif evento.key == pygame.K_q:
+                    self.iteraccion_objetos = IteraccionObjetos.NADA
+                # Evalua si esta en un estado de eventos y si se toco alguna de las letras
+                # En caso de que toque la letra "Y" se confirma.
+                elif evento.key == pygame.K_y:
+                    if self.iteraccion_objetos == IteraccionObjetos.MANZANA or self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
+                        # Actuliza el nivel para mantener un registro del juego.
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+                # En caso de que toque la letra "N" se rechaza.
+                elif evento.key == pygame.K_n:
+
+                    if self.iteraccion_objetos == IteraccionObjetos.MANZANA or self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
+
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+                # En caso de que el jugador toque la letra "V" pueda observar lo completado hasta ahora.
+                elif evento.key == pygame.K_v:
+                    self.estado_nivel.ver_estado_nivel()
 
     def cargar_mapa(self, nombre_archivo):
         with open('mapas/' + nombre_archivo + ".txt") as mapa_archivo:
