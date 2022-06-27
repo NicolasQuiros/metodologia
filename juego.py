@@ -1,12 +1,12 @@
+from ast import If
 import math
-from time import sleep
-import time
 import pygame
 # Modulos creados
 from jugador import Jugador
 from estado_juego import EstadoJuego
 from iteraccion_objetos import IteraccionObjetos
 from utilidades import reaccion
+from estado_nivel import EstadoNivel
 import config
 
 
@@ -23,6 +23,7 @@ class Juego:
         self.jugador_se_movio = False
         # Creamos un objeto camara para seguimiento_camara en el mapa
         self.camara = [0, 0]
+        self.estado_nivel = EstadoNivel()
 
     def configurar(self):  # Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
         jugador = Jugador(1, 1)
@@ -53,12 +54,12 @@ class Juego:
         if self.iteraccion_objetos ==  IteraccionObjetos.NADA:
             return
         elif self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
-            reaccion(self.pantalla,"Esa tilin")
-            self.iteraccion_objetos = IteraccionObjetos.NADA
+            reaccion(self.pantalla,"Vamos aprobar?")
+            #self.iteraccion_objetos = IteraccionObjetos.NADA
             return
         elif self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR:
             reaccion(self.pantalla,"Andas seguido por aca?")
-            self.iteraccion_objetos = IteraccionObjetos.NADA
+            #self.iteraccion_objetos = IteraccionObjetos.NADA
             return        
 
     def determinar_eventos_jugador(self):
@@ -99,6 +100,21 @@ class Juego:
                     elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]=="2":
                         print(self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.PREGUNTAR
+                elif evento.key == pygame.K_q:
+                    self.iteraccion_objetos = IteraccionObjetos.NADA
+                elif evento.key == pygame.K_y:
+                    if self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR or self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
+                        print("selecciono si")
+                        self.estado_nivel.actualizar_nivel(self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                elif evento.key == pygame.K_n:
+                    if self.iteraccion_objetos == IteraccionObjetos.PREGUNTAR or self.iteraccion_objetos ==  IteraccionObjetos.SALUDAR:
+                        print("selecciono no")
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+                elif evento.key == pygame.K_v:
+                    self.estado_nivel.ver_estado_nivel()
+                    
 
                     """"
                 elif evento.key == pygame.K_w:  # arriba
