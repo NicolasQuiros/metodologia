@@ -5,7 +5,7 @@ import pygame
 from jugador import Jugador
 from estado_juego import EstadoJuego
 from iteraccion_objetos import IteraccionObjetos
-from utilidades import generar_burbuja_texto, generar_burbuja_texto2
+from utilidades import generar_burbuja_text_nivel, generar_burbuja_texto, generar_burbuja_texto2
 from estado_nivel import EstadoNivel
 import config
 import textos
@@ -99,6 +99,9 @@ class Juego:
             generar_burbuja_texto2(
                 self.pantalla, textos.PREGUNTA_POCION, textos.PREGUNTA_POCION2,
                 textos.OPCION1_POCION, textos.OPCION2_POCION)
+            return
+        elif self.iteraccion_objetos == IteraccionObjetos.NIVEL:
+            EstadoNivel.ver_estado_nivel_test(self.pantalla)
             return
 
     def determinar_eventos_jugador(self):
@@ -202,6 +205,15 @@ class Juego:
                         self.estado_nivel.actualizar_nivel(
                             self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
+                    elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.POCION:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
 
                 # En caso de que toque la letra "N" se rechaza.
                 elif evento.key == pygame.K_n:
@@ -235,6 +247,7 @@ class Juego:
 
                 # En caso de que el jugador toque la letra "V" pueda observar lo completado hasta ahora.
                 elif evento.key == pygame.K_v:
+                    self.iteraccion_objetos = IteraccionObjetos.NIVEL
                     self.estado_nivel.ver_estado_nivel()
 
     def cargar_mapa(self, nombre_archivo):
