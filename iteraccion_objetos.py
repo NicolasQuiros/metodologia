@@ -3,6 +3,7 @@ from enum import Enum
 
 class IteraccionObjetos(Enum):
     NADA = 0,
+
     PINGUINO_INICIO = 1, #A
     MANZANA = 2, #M
     CALCULADORA = 3, #C
