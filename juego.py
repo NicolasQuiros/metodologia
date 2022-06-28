@@ -98,8 +98,6 @@ class Juego:
         letra_mapa = self.mapa[self.jugador.posicion[1]
                                ][self.jugador.posicion[0]]
 
-        if letra_mapa == config.LETRA_MAPA_CAMINO:
-            return
 
     def manipular_eventos(self):
         # Si el jugador toca o mantiene presionada una tecla.
@@ -220,6 +218,12 @@ class Juego:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.LIBRO:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+                    
+                    elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+                    
+                    elif self.iteraccion_objetos == IteraccionObjetos.POCION:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                 # En caso de que el jugador toque la letra "V" pueda observar lo completado hasta ahora.
