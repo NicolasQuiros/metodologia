@@ -5,7 +5,7 @@ import pygame
 from jugador import Jugador
 from estado_juego import EstadoJuego
 from iteraccion_objetos import IteraccionObjetos
-from utilidades import generar_burbuja_texto,generar_burbuja_texto2
+from utilidades import generar_burbuja_texto, generar_burbuja_texto2
 from estado_nivel import EstadoNivel
 import config
 import textos
@@ -62,42 +62,48 @@ class Juego:
             return
         elif self.iteraccion_objetos == IteraccionObjetos.MANZANA:
             generar_burbuja_texto2(self.pantalla, textos.PREGUNTA_MANZANA, textos.PREGUNTA_MANZANA2,
-                                  textos.OPCION1_MANZANA, textos.OPCION2_MANZANA)
+                                   textos.OPCION1_MANZANA, textos.OPCION2_MANZANA)
             #self.iteraccion_objetos = IteraccionObjetos.NADA
             return
         elif self.iteraccion_objetos == IteraccionObjetos.CALCULADORA:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_CAL, textos.OPCION1_CAL, textos.OPCION2_CAL)
+            generar_burbuja_texto(
+                self.pantalla, textos.PREGUNTA_CAL, textos.OPCION1_CAL, textos.OPCION2_CAL)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.BOLA:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_BOLACRISTAL, textos.OPCION1_BOLACRISTAL, textos.OPCION2_BOLACRISTAL)
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_BOLACRISTAL,
+                                  textos.OPCION1_BOLACRISTAL, textos.OPCION2_BOLACRISTAL)
             return
-        
+
         elif self.iteraccion_objetos == IteraccionObjetos.BRUJULA:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_BRUJULA, textos.OPCION1_BRUJULA, textos.OPCION2_BRUJULA)
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_BRUJULA,
+                                  textos.OPCION1_BRUJULA, textos.OPCION2_BRUJULA)
             return
-        
+
         elif self.iteraccion_objetos == IteraccionObjetos.GIT:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_GIT, textos.OPCION1_GIT, textos.OPCION2_GIT)
+            generar_burbuja_texto(
+                self.pantalla, textos.PREGUNTA_GIT, textos.OPCION1_GIT, textos.OPCION2_GIT)
             return
-        
+
         elif self.iteraccion_objetos == IteraccionObjetos.LIBRO:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTO_LIBRO, textos.OPCION1_LIBRO, textos.OPCION2_LIBRO)
+            generar_burbuja_texto(
+                self.pantalla, textos.PREGUNTO_LIBRO, textos.OPCION1_LIBRO, textos.OPCION2_LIBRO)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_SERPIENTE, textos.OPCION1_SERPIENTE, textos.OPCION2_SERPIENTE)
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_SERPIENTE,
+                                  textos.OPCION1_SERPIENTE, textos.OPCION2_SERPIENTE)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.POCION:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_POCION, textos.OPCION1_POCION, textos.OPCION2_POCION)
+            generar_burbuja_texto(
+                self.pantalla, textos.PREGUNTA_POCION, textos.OPCION1_POCION, textos.OPCION2_POCION)
             return
 
     def determinar_eventos_jugador(self):
         # TRADUCIME
         letra_mapa = self.mapa[self.jugador.posicion[1]
                                ][self.jugador.posicion[0]]
-
 
     def manipular_eventos(self):
         # Si el jugador toca o mantiene presionada una tecla.
@@ -134,25 +140,25 @@ class Juego:
                     elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "2":
                         self.iteraccion_objetos = IteraccionObjetos.MANZANA
 
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "3":
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "3":
                         self.iteraccion_objetos = IteraccionObjetos.CALCULADORA
-                    
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "4":
+
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "4":
                         self.iteraccion_objetos = IteraccionObjetos.TUX
-                    
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "5":
+
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "5":
                         self.iteraccion_objetos = IteraccionObjetos.BOLA
-                    
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "6":
+
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "6":
                         self.iteraccion_objetos = IteraccionObjetos.GIT
-                    
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "7":
+
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "7":
                         self.iteraccion_objetos = IteraccionObjetos.LIBRO
-                    
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "8":
+
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "8":
                         self.iteraccion_objetos = IteraccionObjetos.SERPIENTE
-                    
-                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "9":
+
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "9":
                         self.iteraccion_objetos = IteraccionObjetos.POCION
 
                 elif evento.key == pygame.K_q:
@@ -219,10 +225,10 @@ class Juego:
 
                     elif self.iteraccion_objetos == IteraccionObjetos.LIBRO:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
-                    
+
                     elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
-                    
+
                     elif self.iteraccion_objetos == IteraccionObjetos.POCION:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
@@ -272,29 +278,39 @@ class Juego:
         # Verificamos que la posicion no sea un tipo de mapa por donde
         # el jugador no puede pasar.
         # Por ejemplo un muro
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "F":
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_PARED:
+            return
+        #PINGUINO
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_PINGUINO:
+            return
+        #MANZANA
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_MANZANA:
+            return
+        #CALCULADORA
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_CALCULADORA:
+            return
+        #BRUJULA
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_BRUJULA:
 
             return
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "P":
+        #BOLA
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_BOLA:
 
             return
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "L":
+        #GIT
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_GIT:
 
             return
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "X":
+        #LIBRO
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_LIBRO:
 
             return
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "C":
-
+        #SERPIENTE
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_SERPIENTE:
             return
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "A":
-
-            return
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "G":
-
-            return
-        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == "B":
-
+        
+        #POCION
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_POCION:
             return
         self.jugador_se_movio = True
         unidad.actualizarPosicion(nueva_posicion)
@@ -319,35 +335,36 @@ mapa_letras_imagen = {
     "D": pygame.transform.scale(pygame.image.load("imagenes/D.png"), (config.ESCALA, config.ESCALA)),
     "F": pygame.transform.scale(pygame.image.load("imagenes/T.png"), (config.ESCALA, config.ESCALA)),
     "S": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    #cambiarletra
     #CALCULADORA /C
     config.LETRA_MAPA_CALCULADORA : pygame.transform.scale(pygame.image.load("imagenes/Calculadora.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_CALCULADORA : pygame.transform.scale(pygame.image.load("imagenes/Calculadora.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_CALCULADORA : pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #PINGUINO /P
     config.LETRA_MAPA_PINGUINO : pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_PINGUINO : pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_PINGUINO : pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #BOLA /B
     config.LETRA_MAPA_BOLA : pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_BOLA : pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_BOLA : pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
     #POSION /X
     config.LETRA_MAPA_POCION : pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_POCION : pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_POCION : pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
     #LIBRO ROJO /R
-    config.LETRA_MAPA_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/B.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/B.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_MAPA_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/R.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
     #GIT
     config.LETRA_MAPA_GIT: pygame.transform.scale(pygame.image.load("imagenes/Gato.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_GIT: pygame.transform.scale(pygame.image.load("imagenes/Gato.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_GIT: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #SERPIENTE
     config.LETRA_MAPA_SERPIENTE: pygame.transform.scale(pygame.image.load("imagenes/Serpiente.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_SERPIENTE: pygame.transform.scale(pygame.image.load("imagenes/Serpiente.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_SERPIENTE: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #MANZANA
     config.LETRA_MAPA_MANZANA: pygame.transform.scale(pygame.image.load("imagenes/Manzana.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_MANZANA: pygame.transform.scale(pygame.image.load("imagenes/Manzana.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_MANZANA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #BRÚJULA
     config.LETRA_MAPA_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/Brújula.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/Brújula.png"), (config.ESCALA, config.ESCALA)),
-    #----------------------------------
+    config.LETRA_INT_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    # CALCULADORA
+    config.LETRA_MAPA_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/C.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #LUZ
     "L": pygame.transform.scale(pygame.image.load("imagenes/L.png"), (config.ESCALA, config.ESCALA)),
     #LIBRO VERDE /G
@@ -355,10 +372,7 @@ mapa_letras_imagen = {
     #MESA
     "T": pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
     #LLAVE 
-    "K": pygame.transform.scale(pygame.image.load("imagenes/K.png"), (config.ESCALA, config.ESCALA)),
-    #SUELO EN ZONAS DE INTERACCIÓN
-    "1": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    "2": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA))
+    "K": pygame.transform.scale(pygame.image.load("imagenes/K.png"), (config.ESCALA, config.ESCALA))
 
 
 }
