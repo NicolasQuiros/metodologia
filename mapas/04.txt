@@ -1,7 +1,7 @@
 D D F F F F F F F F F F F F F F D D F F
-D D S S 2 M 2 S S S S S 1 A F S S S S F
+D D S S 2 M 2 S S S S S 1 P F S S S S F
 F S S S S 2 S F T 5 T T S 1 F S S S S F
-F S S S S S S F 5 P L T S S F S S S S F
+F S S S S S S F 5 B L T S S F S S S S F
 F S S S S S S F T 5 T T S S F S S S S F
 F F F F F F F F S S S S S S F S S S S F
 F Y 8 T T T S F S F S F S F F S S S S F
@@ -11,10 +11,10 @@ F S S 9 X 9 S S S S S S S S F S S S S F
 F S S T 9 T S S S F S F S F F S S S 4 F
 F S S S S S S F S S S S S S F S S 4 O F
 F F S F F F F F F F F F S S F F F F F F
-F A S F S S S S S S S F S S F A A A A F
+F P S F S S S S S S S F S S F P P P P F
 F S S F S T 7 T T T S F S S F S S S S F
-F S S F S 7 B L G T S F S S F S S S S F
+F S S F S 7 R L G T S F S S F S S S S F
 F S S F S T 7 T T T S F S S F S S S S F
 F 6 S F S S S S S S S S S S S S S S 3 F
-F H 6 F S S S S S S S S K A S S S 3 C F
+F H 6 F S S S S S S S S K P S S S 3 C F
 F F F F F F F F F F F F F F F F F F F F
