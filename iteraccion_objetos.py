@@ -1,4 +1,3 @@
-from ctypes import LibraryLoader
 from enum import Enum
 
 
@@ -13,3 +12,4 @@ class IteraccionObjetos(Enum):
     LIBRO = 7,#B
     SERPIENTE = 8, #Y
     POCION = 9,#X
+
