@@ -1,7 +1,8 @@
 import pygame
 import sys
 from estado_juego import EstadoJuego
-
+from juego import Juego
+import config
 relojPrincipal = pygame.time.Clock()
 # Importamos el mezclador de música de la biblioteca Pygame
 from pygame.locals import *
@@ -21,6 +22,12 @@ fuente = pygame.font.Font("alagard.ttf", 25)
 mixer.music.load("musica/Music Box - Brian Bolger.mp3")
 
 mixer.music.play(-1)
+pantalla = pygame.display.set_mode(
+    (config.LARGO_PANTALLA, config.ALTO_PANTALLA))
+# Colocamos un nombre para la ventana que va aparecer.
+pygame.display.set_caption('La Princesa y el Pingüino')
+reloj = pygame.time.Clock()  # Pygame incluye una funcion time para setear el tiempo
+juego = Juego(pantalla)
 
 pausarMusica = False
 def pausar_musica(pausarMusica):
@@ -39,7 +46,7 @@ def escribirTexto(texto, fuente, color, superficie, x, y):
     superficie.blit(textoObjeto, textoRectangulo)
 
 
-def menuPrincipal():
+def menuPrincipal(pausarMusica):
     while True:
         # Cargamos el fondo del menú
         pantalla.fill((0, 0, 0))
@@ -52,10 +59,18 @@ def menuPrincipal():
         # Asignamos los puntos de colisión del mouse respecto de cada botón
         if boton1.collidepoint((mx, my)):
             if click:
-                estado_juego = EstadoJuego.CORRIENDO
+                juego.configurar()
+                while juego.estado_juego == EstadoJuego.CORRIENDO:
+                    reloj.tick(7)  # Seteamos el tiempo de juego en 50.
+                    juego.actualizar()  # hacemos la configuracion inicial
+                    # Actsualizamos el contenido de la pantalla con flip.
+                    pygame.display.flip()
+                if EstadoJuego.TERMINADO:
+                    break
         if boton2.collidepoint((mx, my)):
             if click:
                 pausarMusica = not  pausarMusica
+                pausar_musica(pausarMusica)
         pygame.draw.rect(pantalla, (233, 196, 0), boton1, 0, 10)
         pygame.draw.rect(pantalla, (233, 196, 0), boton2, 0, 10)
         escribirTexto('Iniciar Juego', fuente, (185, 155, 8), pantalla, 425, 305)
@@ -76,5 +91,4 @@ def menuPrincipal():
         pygame.display.update()
         relojPrincipal.tick(60)
 
-pausar_musica()
-menuPrincipal()
+menuPrincipal(pausarMusica)
