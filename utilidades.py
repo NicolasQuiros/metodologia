@@ -73,19 +73,24 @@ def generar_burbuja_texto(pantalla, texto, opcion1, opcion2):
     pantalla.blit(fuenteNo, (450, 400))
     pantalla.blit(fuenteSi, (40, 400))
 
-def generar_burbuja_text_nivel(pantalla, textos):
-    POS_X = 320
+################################################################################################
+def generar_burbuja_text_nivel(pantalla, vector):
+    POS_X = 105
     # Cargamos la imagen del fondo.
-    imagen = pygame.image.load("imagenes/dialogo.png")
+    imagen = pygame.image.load("imagenes/papiro.png")
     # La escalamos para que quede bien en nuestro juego
-    imagen = pygame.transform.scale(imagen, (640, 200))
+    imagen = pygame.transform.scale(imagen, (250, 320))
     # Superponemos la imagen con el fondo del juego.
-    pantalla.blit(imagen, (0, 280))
+    pantalla.blit(imagen, (390, 20))
     # Definimos una fuente comun
-    fuente = pygame.font.Font('alagard.ttf', 40)
+    fuente = pygame.font.Font('alagard.ttf', 22)
    # Renderizamos el texto ingresado
-    imagen2 = fuente.render(textos[0], True, config.NEGRO)
-    imagen3 = fuente.render(textos[1], True, config.NEGRO)
+    textos = []
+    for mision in vector:
+        textos.append("Completo" if mision == True else "Incompleto")
+
+    imagen1 = fuente.render(textos[0], True, config.NEGRO)
+    imagen2 = fuente.render(textos[1], True, config.NEGRO)
     imagen3 = fuente.render(textos[2], True, config.NEGRO)
     imagen4 = fuente.render(textos[3], True, config.NEGRO)
     imagen5 = fuente.render(textos[4], True, config.NEGRO)
@@ -94,19 +99,17 @@ def generar_burbuja_text_nivel(pantalla, textos):
     imagen8 = fuente.render(textos[7], True, config.NEGRO)
     imagen9 = fuente.render(textos[8], True, config.NEGRO)
     # Superponemos el texto a la imagen ya superpuesta antes.
-    pantalla.blit(imagen2, (40, POS_X))
-    pantalla.blit(imagen3, (40,POS_X+20))
-    pantalla.blit(imagen4, (40,POS_X+40))
-    pantalla.blit(imagen5, (40,POS_X+60))
-    pantalla.blit(imagen6, (40,POS_X+80))
-    pantalla.blit(imagen7, (40,POS_X+100))
-    pantalla.blit(imagen8, (40,POS_X+120))
-    pantalla.blit(imagen9, (40,POS_X+140))
-    # Definimos una fuente comun para el si y el no.
-    fuenteSi = pygame.font.Font('alagard.ttf', 35)
-    fuenteNo = pygame.font.Font('alagard.ttf', 35)
+    pantalla.blit(imagen1, (460, POS_X-20))
+    pantalla.blit(imagen2, (460,POS_X+2))
+    pantalla.blit(imagen3, (460,POS_X+22))
+    pantalla.blit(imagen4, (460,POS_X+42))
+    pantalla.blit(imagen5, (460,POS_X+62))
+    pantalla.blit(imagen6, (460,POS_X+82))
+    pantalla.blit(imagen7, (460,POS_X+102))
+    pantalla.blit(imagen8, (460,POS_X+122))
+    pantalla.blit(imagen9, (460,POS_X+142))
     # Renderizamos el texto en la imagen ya superpuesta antes
-    fuenteSalir = pygame.font.Font('alagard.ttf', 35)
+    fuenteSalir = pygame.font.Font('alagard.ttf', 20)
     fuenteSalir = fuenteSalir.render("Salir (Q)", True, config.NEGRO)
     # Superponemos el texto salir,si,no.
-    pantalla.blit(fuenteSalir, (475, 285))
+    pantalla.blit(fuenteSalir, (480, 42))
