@@ -101,7 +101,8 @@ class Juego:
                 textos.OPCION1_POCION, textos.OPCION2_POCION)
             return
         elif self.iteraccion_objetos == IteraccionObjetos.NIVEL:
-            EstadoNivel.ver_estado_nivel_test(self.pantalla)
+            textos_vector = self.estado_nivel.acceder_nivel()
+            generar_burbuja_text_nivel(self.pantalla, textos_vector)
             return
 
     def determinar_eventos_jugador(self):

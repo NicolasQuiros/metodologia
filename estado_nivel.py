@@ -1,3 +1,4 @@
+from re import T
 import utilidades
 import string
 
@@ -58,4 +59,7 @@ class EstadoNivel:
             textos.append("Completo" if mision == True else "Incompleto")
         
         utilidades.generar_burbuja_text_nivel(pantalla,textos)
+    
+    def acceder_nivel(self):
+        return [self.uno, self.dos, self.tres, self.cuatro, self.cinco,self.seis,self.siete, self.ocho,self.nueve]
 
