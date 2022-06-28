@@ -4,7 +4,11 @@ SALUDO_PINGUINO = "Hola jovencita, soy Tux."
 PREGUNTA_TUX = "Que sistema operativo usa usted?"
 MALA_ELECCION = "QUE MAL, NADIE DEBERIA USAR ESE SO."
 BUENA_ELECCCION = "EXCELENTE GUSTO SEÑORITA"
-#Matematica
+#BRUJULA
+PREGUNTA_BRUJULA = "Donde se esconde el sol"
+OPCION1_BRUJULA = "Oeste"
+OPCION2_BRUJULA = "Este"
+#CALCULADORA
 PREGUNTA_CAL = "Cuanto es (23+1)*2?"
 OPCION1_CAL = "48"
 OPCION2_CAL = "32"
