@@ -335,17 +335,44 @@ mapa_letras_imagen = {
     "D": pygame.transform.scale(pygame.image.load("imagenes/D.png"), (config.ESCALA, config.ESCALA)),
     "F": pygame.transform.scale(pygame.image.load("imagenes/T.png"), (config.ESCALA, config.ESCALA)),
     "S": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    # Calculadora
+    #CALCULADORA /C
+    config.LETRA_MAPA_CALCULADORA : pygame.transform.scale(pygame.image.load("imagenes/Calculadora.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_CALCULADORA : pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    #PINGUINO /P
+    config.LETRA_MAPA_PINGUINO : pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_PINGUINO : pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    #BOLA /B
+    config.LETRA_MAPA_BOLA : pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_BOLA : pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
+    #POSION /X
+    config.LETRA_MAPA_POCION : pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_POCION : pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
+    #LIBRO ROJO /R
+    config.LETRA_MAPA_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/R.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
+    #GIT
+    config.LETRA_MAPA_GIT: pygame.transform.scale(pygame.image.load("imagenes/Gato.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_GIT: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    #SERPIENTE
+    config.LETRA_MAPA_SERPIENTE: pygame.transform.scale(pygame.image.load("imagenes/Serpiente.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_SERPIENTE: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    #MANZANA
+    config.LETRA_MAPA_MANZANA: pygame.transform.scale(pygame.image.load("imagenes/Manzana.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_MANZANA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    #BRÚJULA
+    config.LETRA_MAPA_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/Brújula.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    # CALCULADORA
     config.LETRA_MAPA_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/C.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/C.png"), (config.ESCALA, config.ESCALA)),
-    "A": pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
-    "P": pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
-    "T": pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
-    "X": pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    #LUZ
     "L": pygame.transform.scale(pygame.image.load("imagenes/L.png"), (config.ESCALA, config.ESCALA)),
-    "B": pygame.transform.scale(pygame.image.load("imagenes/B.png"), (config.ESCALA, config.ESCALA)),
+    #LIBRO VERDE /G
     "G": pygame.transform.scale(pygame.image.load("imagenes/G.png"), (config.ESCALA, config.ESCALA)),
-    "K": pygame.transform.scale(pygame.image.load("imagenes/K.png"), (config.ESCALA, config.ESCALA)),
-    "1": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    "2": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA))
+    #MESA
+    "T": pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
+    #LLAVE 
+    "K": pygame.transform.scale(pygame.image.load("imagenes/K.png"), (config.ESCALA, config.ESCALA))
+
+
 }
