@@ -35,7 +35,7 @@ class Juego:
         # Cargamos al jugador dentro de la lista de objetos
         self.objetos.append(jugador)
         self.estado_juego = EstadoJuego.CORRIENDO
-        self.cargar_mapa("04")
+        self.cargar_mapa("05")
 
     def actualizar(self):
         self.pantalla.fill(config.NEGRO)
