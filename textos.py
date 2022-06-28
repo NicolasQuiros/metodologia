@@ -1,4 +1,7 @@
 SALUDO_PINGUINO = "Hola jovencita, soy Tux."
+SALUDO_PINGUINO2 = "Esta lista para escapar?"
+OPCION1_PINGUINO = "NO"
+OPCION2_PINGUINO = "SI"
 #Preguntas
 #TUX aka pinguino
 PREGUNTA_TUX = "Que sistema operativo usa usted?"
@@ -33,7 +36,7 @@ OPCION2_MANZANA = "50"
 #Bola de cristal
 PREGUNTA_BOLACRISTAL = "Vamos a aprobar?"
 OPCION1_BOLACRISTAL = "SI"
-OPCION2_BOLACRISTAL = "Obvio"
+OPCION2_BOLACRISTAL = "NO"
 #Pocion
 PREGUNTA_POCION = "Cual es el peso atomico"
 PREGUNTA_POCION2 = " de el Hierro?"

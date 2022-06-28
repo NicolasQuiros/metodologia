@@ -1,12 +1,12 @@
 from ast import If
 import math
+from threading import Timer
 import pygame
-from sqlalchemy import true
 # Modulos creados
 from jugador import Jugador
 from estado_juego import EstadoJuego
 from iteraccion_objetos import IteraccionObjetos
-from utilidades import generar_burbuja_text_nivel, generar_burbuja_texto, generar_burbuja_texto2,generar_burbuja_ganar,generar_burbuja_no_ganar
+from utilidades import generar_burbuja_text_nivel, generar_burbuja_texto, generar_burbuja_texto2,generar_burbuja_ganar,generar_burbuja_no_ganar, generar_burbuja_texto3
 from estado_nivel import EstadoNivel
 import config
 import textos
@@ -28,7 +28,7 @@ class Juego:
         self.estado_nivel = EstadoNivel()
         # Atributo que nos dice si la princesa ya tiene la llave
         self.llave = False
-
+    
     def configurar(self):  # Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
         jugador = Jugador(1, 1)
         self.jugador = jugador
@@ -58,8 +58,8 @@ class Juego:
             return
         elif self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
             #reaccion(self.pantalla, "Hola!")
-            generar_burbuja_texto(
-                self.pantalla, textos.SALUDO_PINGUINO, "si", "no")
+            generar_burbuja_texto2(
+                self.pantalla, textos.SALUDO_PINGUINO,textos.SALUDO_PINGUINO2, textos.OPCION1_PINGUINO, textos.OPCION2_PINGUINO)
             #self.iteraccion_objetos = IteraccionObjetos.NADA
             return
         elif self.iteraccion_objetos == IteraccionObjetos.MANZANA:
@@ -69,12 +69,12 @@ class Juego:
             return
         elif self.iteraccion_objetos == IteraccionObjetos.CALCULADORA:
             generar_burbuja_texto(
-                self.pantalla, textos.PREGUNTA_CAL, textos.OPCION1_CAL, textos.OPCION2_CAL)
+                self.pantalla, textos.PREGUNTA_CAL, textos.OPCION2_CAL, textos.OPCION1_CAL)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.BOLA:
             generar_burbuja_texto(self.pantalla, textos.PREGUNTA_BOLACRISTAL,
-                                  textos.OPCION1_BOLACRISTAL, textos.OPCION2_BOLACRISTAL)
+                                  textos.OPCION2_BOLACRISTAL, textos.OPCION1_BOLACRISTAL)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.BRUJULA:
@@ -93,8 +93,8 @@ class Juego:
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
-            generar_burbuja_texto2(self.pantalla, textos.PREGUNTA_SERPIENTE, textos.PREGUNTA_SERPIENTE2,
-                                   textos.OPCION1_SERPIENTE, textos.OPCION2_SERPIENTE)
+            generar_burbuja_texto3(self.pantalla, textos.PREGUNTA_SERPIENTE, textos.PREGUNTA_SERPIENTE2,
+                                   textos.OPCION2_SERPIENTE, textos.OPCION1_SERPIENTE)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.POCION:
@@ -207,13 +207,9 @@ class Juego:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
-                        self.estado_nivel.actualizar_nivel(
-                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.CALCULADORA:
-                        self.estado_nivel.actualizar_nivel(
-                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.BRUJULA:
@@ -222,8 +218,6 @@ class Juego:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.BOLA:
-                        self.estado_nivel.actualizar_nivel(
-                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.GIT:
@@ -235,9 +229,8 @@ class Juego:
                         self.estado_nivel.actualizar_nivel(
                             self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
+
                     elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
-                        self.estado_nivel.actualizar_nivel(
-                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.POCION:
@@ -252,15 +245,21 @@ class Juego:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.CALCULADORA:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.BRUJULA:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.BOLA:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.GIT:
@@ -270,6 +269,8 @@ class Juego:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
 
                     elif self.iteraccion_objetos == IteraccionObjetos.POCION:

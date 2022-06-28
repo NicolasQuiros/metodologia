@@ -21,14 +21,11 @@ class Jugador:
             "izquierda": pygame.transform.scale(pygame.image.load(config.PRINCESA_IZQUIERDA), (config.ESCALA*1.5, config.ESCALA))
         }
 
-    """ def actualizar(self):
-        ("Jugador actualizado.") """
-
     def actualizarPosicion(self, nueva_posicion):  # nueva_posicion es una tupla
         # Actualizamos la posicion sumandole los cambios hechos en la dimension x e y.
         self.posicion[0] = nueva_posicion[0]
         self.posicion[1] = nueva_posicion[1]
-
+    #Renderiza el personaje
     def render(self, pantalla, camara):
         self.rectangulo = pygame.Rect(self.posicion[0] * config.ESCALA, self.posicion[1] * config.ESCALA - (
             camara[1] * config.ESCALA), config.ESCALA, config.ESCALA)
