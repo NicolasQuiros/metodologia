@@ -72,3 +72,41 @@ def generar_burbuja_texto(pantalla, texto, opcion1, opcion2):
     pantalla.blit(fuenteSalir, (475, 285))
     pantalla.blit(fuenteNo, (450, 400))
     pantalla.blit(fuenteSi, (40, 400))
+
+def generar_burbuja_text_nivel(pantalla, textos):
+    POS_X = 320
+    # Cargamos la imagen del fondo.
+    imagen = pygame.image.load("imagenes/dialogo.png")
+    # La escalamos para que quede bien en nuestro juego
+    imagen = pygame.transform.scale(imagen, (640, 200))
+    # Superponemos la imagen con el fondo del juego.
+    pantalla.blit(imagen, (0, 280))
+    # Definimos una fuente comun
+    fuente = pygame.font.Font('alagard.ttf', 40)
+   # Renderizamos el texto ingresado
+    imagen2 = fuente.render(textos[0], True, config.NEGRO)
+    imagen3 = fuente.render(textos[1], True, config.NEGRO)
+    imagen3 = fuente.render(textos[2], True, config.NEGRO)
+    imagen4 = fuente.render(textos[3], True, config.NEGRO)
+    imagen5 = fuente.render(textos[4], True, config.NEGRO)
+    imagen6 = fuente.render(textos[5], True, config.NEGRO)
+    imagen7 = fuente.render(textos[6], True, config.NEGRO)
+    imagen8 = fuente.render(textos[7], True, config.NEGRO)
+    imagen9 = fuente.render(textos[8], True, config.NEGRO)
+    # Superponemos el texto a la imagen ya superpuesta antes.
+    pantalla.blit(imagen2, (40, POS_X))
+    pantalla.blit(imagen3, (40,POS_X+20))
+    pantalla.blit(imagen4, (40,POS_X+40))
+    pantalla.blit(imagen5, (40,POS_X+60))
+    pantalla.blit(imagen6, (40,POS_X+80))
+    pantalla.blit(imagen7, (40,POS_X+100))
+    pantalla.blit(imagen8, (40,POS_X+120))
+    pantalla.blit(imagen9, (40,POS_X+140))
+    # Definimos una fuente comun para el si y el no.
+    fuenteSi = pygame.font.Font('alagard.ttf', 35)
+    fuenteNo = pygame.font.Font('alagard.ttf', 35)
+    # Renderizamos el texto en la imagen ya superpuesta antes
+    fuenteSalir = pygame.font.Font('alagard.ttf', 35)
+    fuenteSalir = fuenteSalir.render("Salir (Q)", True, config.NEGRO)
+    # Superponemos el texto salir,si,no.
+    pantalla.blit(fuenteSalir, (475, 285))

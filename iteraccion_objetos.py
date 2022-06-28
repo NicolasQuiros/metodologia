@@ -13,4 +13,5 @@ class IteraccionObjetos(Enum):
     LIBRO = 7,#B
     SERPIENTE = 8, #Y
     POCION = 9,#X
+    NIVEL = "U"
 
