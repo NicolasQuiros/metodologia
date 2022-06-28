@@ -7,7 +7,6 @@ import config
 class Jugador:
     # Constructor por defecto
     def __init__(self, posicion_x, posicion_y):
-        print("Jugador creado.")
         # Creamos al jugador en su posicion inicial
         self.posicion = [posicion_x, posicion_y]
         self.imagen = pygame.image.load(config.PRINCESA_FRENTE)
@@ -22,8 +21,8 @@ class Jugador:
             "izquierda": pygame.transform.scale(pygame.image.load(config.PRINCESA_IZQUIERDA), (config.ESCALA*1.5, config.ESCALA))
         }
 
-    def actualizar(self):
-        print("Jugador actualizado.")
+    """ def actualizar(self):
+        ("Jugador actualizado.") """
 
     def actualizarPosicion(self, nueva_posicion):  # nueva_posicion es una tupla
         # Actualizamos la posicion sumandole los cambios hechos en la dimension x e y.
