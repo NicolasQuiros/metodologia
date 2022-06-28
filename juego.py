@@ -91,13 +91,14 @@ class Juego:
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
-            generar_burbuja_texto2(self.pantalla, textos.PREGUNTA_SERPIENTE,
-                                  textos.OPCION1_SERPIENTE, textos.OPCION2_SERPIENTE)
+            generar_burbuja_texto2(self.pantalla, textos.PREGUNTA_SERPIENTE, textos.PREGUNTA_SERPIENTE2,
+                                   textos.OPCION1_SERPIENTE, textos.OPCION2_SERPIENTE)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.POCION:
             generar_burbuja_texto2(
-                self.pantalla, textos.PREGUNTA_POCION, textos.OPCION1_POCION, textos.OPCION2_POCION)
+                self.pantalla, textos.PREGUNTA_POCION, textos.PREGUNTA_POCION2,
+                textos.OPCION1_POCION, textos.OPCION2_POCION)
             return
 
     def determinar_eventos_jugador(self):
@@ -280,39 +281,39 @@ class Juego:
         # Por ejemplo un muro
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_PARED:
             return
-        #PINGUINO
+        # PINGUINO
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_PINGUINO:
             return
-        #MANZANA
+        # MANZANA
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_MANZANA:
             return
-        #CALCULADORA
+        # CALCULADORA
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_CALCULADORA:
             return
-        #BRUJULA
+        # BRUJULA
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_BRUJULA:
 
             return
-        #BOLA
+        # BOLA
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_BOLA:
 
             return
-        #GIT
+        # GIT
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_GIT:
 
             return
-        #LIBRO
+        # LIBRO
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_LIBRO:
 
             return
-        #SERPIENTE
+        # SERPIENTE
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_SERPIENTE:
             return
-        
-        #POCION
+
+        # POCION
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_POCION:
             return
-        #LUZ
+        # LUZ
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_LUZ:
             return
         self.jugador_se_movio = True
@@ -339,39 +340,39 @@ mapa_letras_imagen = {
     "F": pygame.transform.scale(pygame.image.load("imagenes/T.png"), (config.ESCALA, config.ESCALA)),
     "S": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #CALCULADORA /C
-    config.LETRA_MAPA_CALCULADORA : pygame.transform.scale(pygame.image.load("imagenes/Calculadora.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_CALCULADORA : pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_MAPA_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/Calculadora.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #PINGUINO /P
-    config.LETRA_MAPA_PINGUINO : pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_PINGUINO : pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_MAPA_PINGUINO: pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_PINGUINO: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #BOLA /B
-    config.LETRA_MAPA_BOLA : pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_BOLA : pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_MAPA_BOLA: pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_BOLA: pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
     #POSION /X
-    config.LETRA_MAPA_POCION : pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_POCION : pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
-    #LIBRO ROJO /R
+    config.LETRA_MAPA_POCION: pygame.transform.scale(pygame.image.load("imagenes/X.png"), (config.ESCALA, config.ESCALA)),
+    config.LETRA_INT_POCION: pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
+    # LIBRO ROJO /R
     config.LETRA_MAPA_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/R.png"), (config.ESCALA, config.ESCALA)),
     config.LETRA_INT_LIBRO: pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
-    #GIT
+    # GIT
     config.LETRA_MAPA_GIT: pygame.transform.scale(pygame.image.load("imagenes/Gato.png"), (config.ESCALA, config.ESCALA)),
     config.LETRA_INT_GIT: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    #SERPIENTE
+    # SERPIENTE
     config.LETRA_MAPA_SERPIENTE: pygame.transform.scale(pygame.image.load("imagenes/Serpiente.png"), (config.ESCALA, config.ESCALA)),
     config.LETRA_INT_SERPIENTE: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    #MANZANA
+    # MANZANA
     config.LETRA_MAPA_MANZANA: pygame.transform.scale(pygame.image.load("imagenes/Manzana.png"), (config.ESCALA, config.ESCALA)),
     config.LETRA_INT_MANZANA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    #BRÚJULA
+    # BRÚJULA
     config.LETRA_MAPA_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/Brújula.png"), (config.ESCALA, config.ESCALA)),
     config.LETRA_INT_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    #LUZ
+    # LUZ
     "L": pygame.transform.scale(pygame.image.load("imagenes/L.png"), (config.ESCALA, config.ESCALA)),
-    #LIBRO VERDE /G
+    # LIBRO VERDE /G
     "G": pygame.transform.scale(pygame.image.load("imagenes/G.png"), (config.ESCALA, config.ESCALA)),
-    #MESA
+    # MESA
     "T": pygame.transform.scale(pygame.image.load("imagenes/frame.png"), (config.ESCALA, config.ESCALA)),
-    #LLAVE 
+    # LLAVE
     "K": pygame.transform.scale(pygame.image.load("imagenes/K.png"), (config.ESCALA, config.ESCALA))
 
 
