@@ -14,8 +14,8 @@ OPCION1_CAL = "48"
 OPCION2_CAL = "32"
 #Github
 PREGUNTA_GIT = "Que va antes de un 'push'?"
-OPCION1_GIT = "add"
-OPCION2_GIT = "commit"
+OPCION1_GIT = "commit"
+OPCION2_GIT = "add"
 #Libro
 PREGUNTO_LIBRO = "Cuando se creo Linux?"
 OPCION1_LIBRO = "1991"

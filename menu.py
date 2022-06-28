@@ -63,7 +63,7 @@ def menuPrincipal(pausarMusica):
                 while juego.estado_juego == EstadoJuego.CORRIENDO:
                     reloj.tick(7)  # Seteamos el tiempo de juego en 50.
                     juego.actualizar()  # hacemos la configuracion inicial
-                    # Actsualizamos el contenido de la pantalla con flip.
+                    # Actuaalizamos el contenido de la pantalla con flip.
                     pygame.display.flip()
                 if EstadoJuego.TERMINADO:
                     break

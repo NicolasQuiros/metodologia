@@ -1,11 +1,12 @@
 from ast import If
 import math
 import pygame
+from sqlalchemy import true
 # Modulos creados
 from jugador import Jugador
 from estado_juego import EstadoJuego
 from iteraccion_objetos import IteraccionObjetos
-from utilidades import generar_burbuja_text_nivel, generar_burbuja_texto, generar_burbuja_texto2
+from utilidades import generar_burbuja_text_nivel, generar_burbuja_texto, generar_burbuja_texto2,generar_burbuja_ganar,generar_burbuja_no_ganar
 from estado_nivel import EstadoNivel
 import config
 import textos
@@ -25,6 +26,8 @@ class Juego:
         # Creamos un objeto camara para seguimiento_camara en el mapa
         self.camara = [0, 0]
         self.estado_nivel = EstadoNivel()
+        # Atributo que nos dice si la princesa ya tiene la llave
+        self.llave = False
 
     def configurar(self):  # Esta funcion hace una configuracion inicial del juego, creando un Jugador localizado en el 1,1
         jugador = Jugador(1, 1)
@@ -36,7 +39,6 @@ class Juego:
 
     def actualizar(self):
         self.pantalla.fill(config.NEGRO)
-        # print("actualizado")
         self.manipular_eventos()
         self.render_mapa(self.pantalla)
         # Este es el constante actualizador
@@ -48,7 +50,7 @@ class Juego:
             # de esta lista tiene el metodo render()
         if self.jugador_se_movio:
             self.determinar_eventos_jugador()
-
+            self.chequear_interacciones()
         self.iteracciones_jugador()
 
     def iteracciones_jugador(self):
@@ -104,12 +106,37 @@ class Juego:
             textos_vector = self.estado_nivel.acceder_nivel()
             generar_burbuja_text_nivel(self.pantalla, textos_vector)
             return
+        elif self.iteraccion_objetos == IteraccionObjetos.GANAR:
+            if (self.chequear_interacciones()):
+                self.llave = True
+                generar_burbuja_ganar(
+                self.pantalla)
+                return
+            else:
+                generar_burbuja_no_ganar(self.pantalla)
+                return
 
     def determinar_eventos_jugador(self):
-        # TRADUCIME
+        #Tenemos que chequear si el jugador ya gano el juego,
+        #Primero chequeamos que todas las interacciones esten listas
+        #Luego que la princesa haya tocado la llave.
         letra_mapa = self.mapa[self.jugador.posicion[1]
                                ][self.jugador.posicion[0]]
-
+        if letra_mapa == config.LETRA_MAPA_INICIO_FIN and self.llave == True:
+            self.estado_juego = EstadoJuego.TERMINADO
+        #Luego que la princesa este en el terreno de salida
+    def chequear_interacciones(self):
+        #Si todas los estados del nivel estan completos entonces podemos seguir.
+        if (self.estado_nivel.uno == True and 
+        self.estado_nivel.dos == True and
+        self.estado_nivel.tres == True and
+        self.estado_nivel.cuatro == True and
+        self.estado_nivel.cinco == True and 
+        self.estado_nivel.seis == True and 
+        self.estado_nivel.siete == True and
+        self.estado_nivel.ocho == True and
+        self.estado_nivel.nueve == True):
+            return True
     def manipular_eventos(self):
         # Si el jugador toca o mantiene presionada una tecla.
         presionado = pygame.key.get_pressed()
@@ -165,6 +192,8 @@ class Juego:
 
                     elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "9":
                         self.iteraccion_objetos = IteraccionObjetos.POCION
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == config.LETRA_MAPA_LLAVE:
+                        self.iteraccion_objetos = IteraccionObjetos.GANAR
 
                 elif evento.key == pygame.K_q:
                     self.iteraccion_objetos = IteraccionObjetos.NADA
@@ -249,7 +278,6 @@ class Juego:
                 # En caso de que el jugador toque la letra "V" pueda observar lo completado hasta ahora.
                 elif evento.key == pygame.K_v:
                     self.iteraccion_objetos = IteraccionObjetos.NIVEL
-                    self.estado_nivel.ver_estado_nivel()
 
     def cargar_mapa(self, nombre_archivo):
         with open('mapas/' + nombre_archivo + ".txt") as mapa_archivo:
