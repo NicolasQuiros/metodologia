@@ -65,6 +65,33 @@ class Juego:
                                   textos.OPCION1_MANZANA, textos.OPCION2_MANZANA)
             #self.iteraccion_objetos = IteraccionObjetos.NADA
             return
+        elif self.iteraccion_objetos == IteraccionObjetos.CALCULADORA:
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_CAL, textos.OPCION1_CAL, textos.OPCION2_CAL)
+            return
+
+        elif self.iteraccion_objetos == IteraccionObjetos.BOLA:
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_BOLACRISTAL, textos.OPCION1_BOLACRISTAL, textos.OPCION2_BOLACRISTAL)
+            return
+        
+        elif self.iteraccion_objetos == IteraccionObjetos.BRUJULA:
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_BRUJULA, textos.OPCION1_BRUJULA, textos.OPCION2_BRUJULA)
+            return
+        
+        elif self.iteraccion_objetos == IteraccionObjetos.GIT:
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_GIT, textos.OPCION1_GIT, textos.OPCION2_GIT)
+            return
+        
+        elif self.iteraccion_objetos == IteraccionObjetos.LIBRO:
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTO_LIBRO, textos.OPCION1_LIBRO, textos.OPCION2_LIBRO)
+            return
+
+        elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_SERPIENTE, textos.OPCION1_SERPIENTE, textos.OPCION2_SERPIENTE)
+            return
+
+        elif self.iteraccion_objetos == IteraccionObjetos.POCION:
+            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_POCION, textos.OPCION1_POCION, textos.OPCION2_POCION)
+            return
 
     def determinar_eventos_jugador(self):
         # TRADUCIME
@@ -108,22 +135,93 @@ class Juego:
 
                     elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "2":
                         self.iteraccion_objetos = IteraccionObjetos.MANZANA
+
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "3":
+                        self.iteraccion_objetos = IteraccionObjetos.CALCULADORA
+                    
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "4":
+                        self.iteraccion_objetos = IteraccionObjetos.TUX
+                    
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "5":
+                        self.iteraccion_objetos = IteraccionObjetos.BOLA
+                    
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "6":
+                        self.iteraccion_objetos = IteraccionObjetos.GIT
+                    
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "7":
+                        self.iteraccion_objetos = IteraccionObjetos.LIBRO
+                    
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "8":
+                        self.iteraccion_objetos = IteraccionObjetos.SERPIENTE
+                    
+                    elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]]  == "9":
+                        self.iteraccion_objetos = IteraccionObjetos.POCION
+
                 elif evento.key == pygame.K_q:
                     self.iteraccion_objetos = IteraccionObjetos.NADA
                 # Evalua si esta en un estado de eventos y si se toco alguna de las letras
                 # En caso de que toque la letra "Y" se confirma.
                 elif evento.key == pygame.K_y:
-                    if self.iteraccion_objetos == IteraccionObjetos.MANZANA or self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
+                    if self.iteraccion_objetos == IteraccionObjetos.MANZANA:
                         # Actuliza el nivel para mantener un registro del juego.
                         self.estado_nivel.actualizar_nivel(
                             self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
                         self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.CALCULADORA:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.BRUJULA:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.BOLA:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.GIT:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.LIBRO:
+                        self.estado_nivel.actualizar_nivel(
+                            self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]])
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
                 # En caso de que toque la letra "N" se rechaza.
                 elif evento.key == pygame.K_n:
 
-                    if self.iteraccion_objetos == IteraccionObjetos.MANZANA or self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
-
+                    if self.iteraccion_objetos == IteraccionObjetos.MANZANA:
                         self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.PINGUINO_INICIO:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.CALCULADORA:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.BRUJULA:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.BOLA:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.GIT:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
+                    elif self.iteraccion_objetos == IteraccionObjetos.LIBRO:
+                        self.iteraccion_objetos = IteraccionObjetos.NADA
+
                 # En caso de que el jugador toque la letra "V" pueda observar lo completado hasta ahora.
                 elif evento.key == pygame.K_v:
                     self.estado_nivel.ver_estado_nivel()
@@ -217,6 +315,7 @@ mapa_letras_imagen = {
     "D": pygame.transform.scale(pygame.image.load("imagenes/D.png"), (config.ESCALA, config.ESCALA)),
     "F": pygame.transform.scale(pygame.image.load("imagenes/T.png"), (config.ESCALA, config.ESCALA)),
     "S": pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
+    #cambiarletra
     "C": pygame.transform.scale(pygame.image.load("imagenes/C.png"), (config.ESCALA, config.ESCALA)),
     "A": pygame.transform.scale(pygame.image.load("imagenes/A.png"), (config.ESCALA, config.ESCALA)),
     "P": pygame.transform.scale(pygame.image.load("imagenes/P.png"), (config.ESCALA, config.ESCALA)),

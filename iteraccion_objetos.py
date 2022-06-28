@@ -7,7 +7,7 @@ class IteraccionObjetos(Enum):
     PINGUINO_INICIO = 1,
     MANZANA = 2,
     CALCULADORA = 3,
-    TUX = 4,
+    BRUJULA = 4,
     BOLA = 5,
     GIT= 6,
     LIBRO = 7,
