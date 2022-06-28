@@ -17,7 +17,7 @@ PREGUNTA_GIT = "Que va antes de un 'push'?"
 OPCION1_GIT = "add"
 OPCION2_GIT = "commit"
 #Libro
-PREGUNTO_LIBRO = "En que año se creo Linux?"
+PREGUNTO_LIBRO = "Cuando se creo Linux?"
 OPCION1_LIBRO = "1991"
 OPCION2_LIBRO = "1945"
 #Serpiente
@@ -32,7 +32,7 @@ OPCION2_MANZANA = "50"
 #Bola de cristal
 PREGUNTA_BOLACRISTAL = "Vamos a aprobar?"
 OPCION1_BOLACRISTAL = "SI"
-OPCION2_BOLACRISTAL = "Obvio papu!"
+OPCION2_BOLACRISTAL = "Obvio"
 #Pocion
 PREGUNTA_POCION = "Cual es el peso atomico de el Hierro"
 OPCION1_POCION = "55.45"

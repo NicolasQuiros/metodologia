@@ -32,7 +32,7 @@ class Juego:
         # Cargamos al jugador dentro de la lista de objetos
         self.objetos.append(jugador)
         self.estado_juego = EstadoJuego.CORRIENDO
-        self.cargar_mapa("03")
+        self.cargar_mapa("04")
 
     def actualizar(self):
         self.pantalla.fill(config.NEGRO)
@@ -91,12 +91,12 @@ class Juego:
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.SERPIENTE:
-            generar_burbuja_texto(self.pantalla, textos.PREGUNTA_SERPIENTE,
+            generar_burbuja_texto2(self.pantalla, textos.PREGUNTA_SERPIENTE,
                                   textos.OPCION1_SERPIENTE, textos.OPCION2_SERPIENTE)
             return
 
         elif self.iteraccion_objetos == IteraccionObjetos.POCION:
-            generar_burbuja_texto(
+            generar_burbuja_texto2(
                 self.pantalla, textos.PREGUNTA_POCION, textos.OPCION1_POCION, textos.OPCION2_POCION)
             return
 
@@ -144,7 +144,7 @@ class Juego:
                         self.iteraccion_objetos = IteraccionObjetos.CALCULADORA
 
                     elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "4":
-                        self.iteraccion_objetos = IteraccionObjetos.TUX
+                        self.iteraccion_objetos = IteraccionObjetos.BRUJULA
 
                     elif self.mapa[self.jugador.posicion[1]][self.jugador.posicion[0]] == "5":
                         self.iteraccion_objetos = IteraccionObjetos.BOLA
@@ -312,6 +312,9 @@ class Juego:
         #POCION
         if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_POCION:
             return
+        #LUZ
+        if self.mapa[nueva_posicion[1]][nueva_posicion[0]] == config.LETRA_MAPA_LUZ:
+            return
         self.jugador_se_movio = True
         unidad.actualizarPosicion(nueva_posicion)
 
@@ -362,9 +365,6 @@ mapa_letras_imagen = {
     #BRÚJULA
     config.LETRA_MAPA_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/Brújula.png"), (config.ESCALA, config.ESCALA)),
     config.LETRA_INT_BRUJULA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
-    # CALCULADORA
-    config.LETRA_MAPA_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/C.png"), (config.ESCALA, config.ESCALA)),
-    config.LETRA_INT_CALCULADORA: pygame.transform.scale(pygame.image.load("imagenes/S.png"), (config.ESCALA, config.ESCALA)),
     #LUZ
     "L": pygame.transform.scale(pygame.image.load("imagenes/L.png"), (config.ESCALA, config.ESCALA)),
     #LIBRO VERDE /G
